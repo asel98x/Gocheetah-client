@@ -1,0 +1,15 @@
+.fit-cover {
+  object-fit: cover;
+}
+
+::-moz-selection {
+}
+
+::-moz-selection {
+  background-color: rgb(233,181,70);
+}
+
+::selection {
+  background-color: #e9b546;
+}
+

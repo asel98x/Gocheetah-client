@@ -1,3 +1,10 @@
+<%-- 
+    Document   : customer-signup
+    Created on : Aug 25, 2022, 6:51:15 PM
+    Author     : asel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 

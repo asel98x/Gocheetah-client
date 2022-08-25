@@ -50,10 +50,10 @@
                         <div class="mb-3">
                             <div class="mb-3"><input class="form-control" type="password" data-aos="zoom-out" data-aos-delay="600" data-aos-once="true" name="customerPassword" id="customerPassword" name="password" placeholder="Password" required="" style="border-style: solid;border-color: rgb(233,181,70);border-radius: 10px;" minlength="8"></div>                        
                         </div>
-                        <div class="mb-3"><button class="btn btn-primary d-block w-100" data-aos="zoom-out" data-aos-delay="800" name="customerSignupBtn" id="customerSignupBtn" type="submit" style="background: rgb(233,181,70);border-color: rgb(233,181,70);">Signup</button></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100" data-aos="zoom-out" data-aos-delay="800" name="customerSignupBtn" id="customerSignupBtn" type="submit" value="Add" style="background: rgb(233,181,70);border-color: rgb(233,181,70);">Signup</button></div>
                     </form>
                 </div>
-            </div>
+            </div
         </div>
     </header>
     <footer class="bg-primary-gradient">

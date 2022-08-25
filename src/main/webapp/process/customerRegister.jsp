@@ -22,5 +22,5 @@
     cs.setPassword(request.getParameter("customerPassword"));
     
     proxy.customerSignup(cs);
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("customer-signup.jsp");
 %>

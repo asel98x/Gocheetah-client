@@ -29,7 +29,7 @@
                 <ul class="navbar-nav mx-auto"></ul>
                 <ul class="navbar-nav">
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="900" data-aos-delay="300" data-aos-once="true" style="color: #e9b546;background: transparent; border-color: #e9b546;margin-left: 0px;margin-right: 10px;" href="customer-login.html">Login</a><a class="btn btn-primary shadow" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" href="customer-signup.html" style="background: #e9b546;border-color: rgb(233,181,70);">Sign up</a>
+                </ul><a class="btn btn-primary" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="900" data-aos-delay="300" data-aos-once="true" style="color: #e9b546;background: transparent; border-color: #e9b546;margin-left: 0px;margin-right: 10px;" href="customer-login.jsp">Login</a><a class="btn btn-primary shadow" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" href="customer-signup.html" style="background: #e9b546;border-color: rgb(233,181,70);">Sign up</a>
             </div>
         </div>
     </nav>

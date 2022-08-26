@@ -4,7 +4,22 @@
     Author     : asel
 --%>
 
+<%@page import="java.util.Base64.Decoder"%>
+<%@page import="java.util.Base64.Encoder"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.util.Base64"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="service.Customer"%>
+<%@page import="service.GocheetahWebService"%>
+<%@page import="service.GocheetahWebService_Service"%>
+
+<%
+    response.setHeader("cache-control", "no-cache");
+    response.setHeader("cache-control", "no-store");
+    response.setHeader("pragma", "no-cache");
+    response.setDateHeader("Expire", 0);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,17 +55,17 @@
                     <div></div>
                 </div>
                 <div class="col-md-6" style="padding: 50px;text-shadow: 0px 0px;box-shadow: 0px 0px 20px 1px rgb(219,219,219);background: white;border-radius: 15px;">
-                    <form class="text-center" method="post" action="customer-signup.html">
-                        <p data-aos="zoom-out" data-aos-delay="100" data-aos-once="true" style="font-size: 25px;font-weight: bold;text-align: center;">Customer signup</p><img style="height: 80px;padding-bottom: 0px;margin-bottom: 10px;border-radius: 40px;width: 80px;" src="../assets/img/cheetah.png">
-                        <div><input class="form-control" type="text" data-aos="zoom-out" data-aos-delay="200" data-aos-once="true" name="customerNAme" id="customerNAme" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Name" required=""></div>
-                        <div><input class="form-control" type="text" data-aos="zoom-out" data-aos-delay="200" data-aos-once="true" name="customerAddress" id="customerAddress" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Address" required=""></div>
-                        <div class="mb-3"><input class="form-control" type="email" data-aos="zoom-out" data-aos-delay="300" data-aos-once="true" name="customerEmail" id="customerEmail" placeholder="Email" style="border-color: rgb(233,181,70);border-radius: 10px;" required=""></div>
-                        <div class="mb-3"><input class="form-control" type="tel" data-aos="zoom-out" data-aos-delay="400" data-aos-once="true" name="customerMobile" id="customerMobile" required="" style="border-color: rgb(233,181,70);border-radius: 10px;" placeholder="Mobile" maxlength="10" minlength="10"></div>
-                        <div class="mb-3"><input class="form-control" type="text" data-aos="zoom-out" data-aos-delay="500" data-aos-once="true" name="customerNIC" id="customerNIC" placeholder="NIC" style="border-color: rgb(233,181,70);border-radius: 10px;" required="" maxlength="10" minlength="10"></div>
+                    <form class="text-center" method="post" action="../process/customerRegister.jsp">                  
+                        <p  style="font-size: 25px;font-weight: bold;text-align: center;">Customer signup</p><img style="height: 80px;padding-bottom: 0px;margin-bottom: 10px;border-radius: 40px;width: 80px;" src="../assets/img/cheetah.png">
+                        <div><input class="form-control" type="text"  name="customerNAme" id="customerNAme" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Name" required=""></div>
+                        <div><input class="form-control" type="text"  name="customerAddress" id="customerAddress" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Address" required=""></div>
+                        <div class="mb-3"><input class="form-control" type="email"  name="customerEmail" id="customerEmail" placeholder="Email" style="border-color: rgb(233,181,70);border-radius: 10px;" required=""></div>
+                        <div class="mb-3"><input class="form-control" type="tel"  name="customerMobile" id="customerMobile" required="" style="border-color: rgb(233,181,70);border-radius: 10px;" placeholder="Mobile" maxlength="10" minlength="10"></div>
+                        <div class="mb-3"><input class="form-control" type="text"  name="customerNIC" id="customerNIC" placeholder="NIC" style="border-color: rgb(233,181,70);border-radius: 10px;" required="" maxlength="10" minlength="10"></div>
                         <div class="mb-3">
-                            <div class="mb-3"><input class="form-control" type="password" data-aos="zoom-out" data-aos-delay="600" data-aos-once="true" name="customerPassword" id="customerPassword" name="password" placeholder="Password" required="" style="border-style: solid;border-color: rgb(233,181,70);border-radius: 10px;" minlength="8"></div>                        
+                            <div class="mb-3"><input class="form-control" type="password" name="customerPassword" id="customerPassword" name="password" placeholder="Password" required="" style="border-style: solid;border-color: rgb(233,181,70);border-radius: 10px;" minlength="8"></div>                        
                         </div>
-                        <div class="mb-3"><button class="btn btn-primary d-block w-100" data-aos="zoom-out" data-aos-delay="800" name="customerSignupBtn" id="customerSignupBtn" type="submit" value="Add" style="background: rgb(233,181,70);border-color: rgb(233,181,70);">Signup</button></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100"  name="customerSignupBtn" id="customerSignupBtn" type="submit" value="Add" style="background: rgb(233,181,70);border-color: rgb(233,181,70);">Signup</button></div>
                     </form>
                 </div>
             </div

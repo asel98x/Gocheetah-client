@@ -16,6 +16,11 @@
     
     <dependencies>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -197,14 +202,14 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/Gocheetah-service/GocheetahWebService.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>service</packageName>
+                            <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
                             <wsdlLocation>http://localhost:8080/Gocheetah-service/GocheetahWebService?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/GocheetahWebService_1.stale</staleFile>
+                            <staleFile>${project.build.directory}/jaxws/stale/GocheetahWebService.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-GocheetahWebService_1</id>
+                        <id>wsimport-generate-GocheetahWebService</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

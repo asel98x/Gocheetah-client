@@ -18,6 +18,7 @@
     response.setHeader("cache-control", "no-store");
     response.setHeader("pragma", "no-cache");
     response.setDateHeader("Expire", 0);
+    
 %>
 
 <!DOCTYPE html>
@@ -38,13 +39,14 @@
 </head>
 
 <body style="background: rgb(248,249,251);">
+    <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3 scrolled" id="mainNav" style="color: rgb(45, 45, 45);padding-bottom: 16px;background: #ffffff;">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="../index.html"><img class="border rounded-circle img-profile" data-aos="fade-right" data-aos-once="true" src="../assets/img/cheetah%20trans.png" style="background: url(&quot;../assets/img/cheetah%20trans.png&quot;) center / contain no-repeat;width: 45px;height: 45px;margin-right: 5px;margin-left: -10px;"></a><a><span data-aos="fade-right" data-aos-duration="300" data-aos-delay="600" data-aos-once="true" style="color: #545454;font-weight: bold;">Gocheetah</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto"></ul>
                 <ul class="navbar-nav">
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="900" data-aos-delay="300" data-aos-once="true" style="color: #e9b546;background: transparent; border-color: #e9b546;margin-left: 0px;margin-right: 10px;" href="customer-login.html">Login</a><a class="btn btn-primary shadow" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" href="customer-signup.html" style="background: #e9b546;border-color: rgb(233,181,70);">Sign up</a>
+                </ul><a class="btn btn-primary" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="900" data-aos-delay="300" data-aos-once="true" style="color: #e9b546;background: transparent; border-color: #e9b546;margin-left: 0px;margin-right: 10px;" href="customer-login.jsp">Login</a><a class="btn btn-primary shadow" role="button" data-bss-disabled-mobile="true" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" href="customer-signup.html" style="background: #e9b546;border-color: rgb(233,181,70);">Sign up</a>
             </div>
         </div>
     </nav>
@@ -55,7 +57,8 @@
                     <div></div>
                 </div>
                 <div class="col-md-6" style="padding: 50px;text-shadow: 0px 0px;box-shadow: 0px 0px 20px 1px rgb(219,219,219);background: white;border-radius: 15px;">
-                    <form class="text-center" method="post" action="../process/customerRegister.jsp">                  
+                    <form class="text-center" method="post" action="c-p-signup.jsp">
+                            
                         <p  style="font-size: 25px;font-weight: bold;text-align: center;">Customer signup</p><img style="height: 80px;padding-bottom: 0px;margin-bottom: 10px;border-radius: 40px;width: 80px;" src="../assets/img/cheetah.png">
                         <div><input class="form-control" type="text"  name="customerNAme" id="customerNAme" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Name" required=""></div>
                         <div><input class="form-control" type="text"  name="customerAddress" id="customerAddress" style="padding: 8.6px 24px;margin-top: 0px;margin-bottom: 10px;border-color: rgb(233,181,70);border-radius: 10px;padding-left: 12px;" placeholder="Address" required=""></div>
@@ -84,6 +87,18 @@
     <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="../assets/js/theme.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="alert/dist/sweetalert.css"><!-- comment -->
+        
+        <script type="text/javascript">
+            var status = document.getElementById("status").value;
+            if(status=="success"){
+                swal("congratulations","successfully registered","success");
+            }else if(status=="failed"){
+                swal("OOps","Unsuccessfully registered","error");
+            }
+        </script>
+    
 </body>
 
 </html>

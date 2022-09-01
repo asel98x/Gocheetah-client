@@ -44,9 +44,9 @@
                 <div class="col-md-6" style="padding: 50px;">
                     <form class="text-center" method="post" action="c-p-login.jsp">
                         <p data-aos="fade" data-aos-delay="100" style="font-size: 25px;font-weight: bold;text-align: center;color: #233143;">Customer login</p>
-                        <div class="mb-3"><input class="form-control" type="tel" data-aos="zoom-out-right" data-aos-delay="200" id="customerMobile" style="border-color: rgb(233,181,70);" placeholder="Mobile" required=""></div>
-                        <div class="mb-3"><input class="form-control" type="password" data-aos="zoom-out-right" data-aos-delay="300" id="customerPword" name="customerPword" placeholder="Password" required="" style="border-style: solid;border-color: rgb(233,181,70);"></div>
-                        <div class="mb-3"><button class="btn btn-primary d-block w-100" data-aos="zoom-out-right" data-aos-delay="500" id="customerLoginBtn" type="submit" style="background: rgb(233,181,70);border-color: rgb(233,181,70);width: 234px;">Login</button></div>
+                        <div class="mb-3"><input class="form-control" type="tel" data-aos="zoom-out-right" data-aos-delay="200"  id="customerMobile" name ="customerMobile" style="border-color: rgb(233,181,70);" placeholder="Mobile" required="" maxlength="10" minlength="10"></div>
+                        <div class="mb-3"><input class="form-control" type="password" data-aos="zoom-out-right" data-aos-delay="300"  id="customerPword" name="customerPword" placeholder="Password" required="" minlength="8" style="border-style: solid;border-color: rgb(233,181,70);"></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100" data-aos="zoom-out-right" data-aos-delay="500" id="customerLoginBtn" type="submit" value="login" style="background: rgb(233,181,70);border-color: rgb(233,181,70);width: 234px;">Login</button></div>
                     </form>
                 </div>
             </div>
@@ -70,7 +70,9 @@
         <script type="text/javascript">
             var status = document.getElementById("status2").value;
             if(status=="success"){
-                swal("Congrats","successfully registered","success");
+                swal("congratulations!","You are successfully registered","success");
+            }else if(status=="failed"){
+                swal("Sorry!","Username or Password is wrong","error");
             }
         </script>
         </script>

@@ -1,50 +1,60 @@
 <%-- 
-    Document   : customerLogin
-    Created on : Aug 31, 2022, 6:34:25 PM
+    Document   : c-p-login
+    Created on : Sep 1, 2022, 5:14:38 PM
     Author     : asel
 --%>
 
-
-<%@page import="java.util.Base64.Encoder"%>
-<%@page import="java.util.Base64.Encoder"%>
 <%@page import="java.util.Base64.Decoder"%>
+<%@page import="java.util.Base64.Encoder"%>
 <%@page import="java.util.Base64"%>
 <%@page import="service.Customer"%>
 <%@page import="service.GocheetahWebService"%>
 <%@page import="service.GocheetahWebService_Service"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-
-    GocheetahWebService_Service service =   new GocheetahWebService_Service();
-    GocheetahWebService proxy = service.getGocheetahWebServicePort();
-    RequestDispatcher dispatcher = null;
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            GocheetahWebService_Service service =   new GocheetahWebService_Service();
+            GocheetahWebService proxy = service.getGocheetahWebServicePort();
+            RequestDispatcher dispatcher = null;
     
-    Customer cs = new Customer();
-    String mobile = request.getParameter("customerMobile");
-    String password = request.getParameter("customerPword");
+            Customer cs = new Customer();
+            int mobile = Integer.parseInt(request.getParameter("customerMobile"));
+            String password = request.getParameter("customerPword");
     
-//    Encoder encoder = Base64.getEncoder();
-//    String encryptedPword = encoder.encodeToString(password.getBytes());
-//    Decoder decoder = Base64.getDecoder();
-//    byte[] bytes = decoder.decode(encryptedPword);
-//    System.out.println("Decrpted code - " + new String(bytes));
-
+            Encoder encoder = Base64.getEncoder();
+            String encryptedPword = encoder.encodeToString(password.getBytes());
+//            Decoder decoder = Base64.getDecoder();
+//            byte[] bytes = decoder.decode(encryptedPword);
+            //sSystem.out.println("Decrpted code - " + new String(bytes));
+            cs.setMobile(mobile);
+            cs.setPassword(encryptedPword);
     
-    
-    if(password.equals("1234")){
-    response.sendRedirect("customer-login.jsp");
-    System.out.println("work");
-        //proxy.customerLogin(cs);
-//        dispatcher = request.getRequestDispatcher("../customer/customer-login.jsp");
-//        request.setAttribute("status2","success");    
+            if(true){
+                try {
+                        if(proxy.customerLogin(cs)){
+                            System.out.println("work");
+                            session.setAttribute("mobile", mobile);
+                            response.sendRedirect("customer-panel.jsp");
+                            
+                        }else{
+                            System.out.println("error");
+                            dispatcher = request.getRequestDispatcher("customer-login.jsp");
+                            request.setAttribute("status", "failed");
+                        }
+                        dispatcher.forward(request, response);
+                        
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+            }
+            
+        %>
         
-        
-    }else{
-        System.out.println("eror");
-//        request.setAttribute("status","success");    
-//        dispatcher = request.getRequestDispatcher("../customer/customer-login.jsp");
-//        proxy.customerLogin(cs);
-    }
-    
-        //dispatcher.forward(request, response);
-%>
+    </body>
+</html>

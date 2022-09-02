@@ -12,15 +12,6 @@
 <%@page import="service.Customer"%>
 <%@page import="service.GocheetahWebService"%>
 <%@page import="service.GocheetahWebService_Service"%>
-
-<%
-    response.setHeader("cache-control", "no-cache");
-    response.setHeader("cache-control", "no-store");
-    response.setHeader("pragma", "no-cache");
-    response.setDateHeader("Expire", 0);
-    
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 

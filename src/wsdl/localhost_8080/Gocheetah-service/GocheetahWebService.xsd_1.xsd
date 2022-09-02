@@ -12,6 +12,10 @@
 
 <xs:element name="customerSignupResponse" type="tns:customerSignupResponse"/>
 
+<xs:element name="driverLogin" type="tns:driverLogin"/>
+
+<xs:element name="driverLoginResponse" type="tns:driverLoginResponse"/>
+
 <xs:element name="hello" type="tns:hello"/>
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
@@ -93,6 +97,28 @@
 </xs:complexType>
 
 <xs:complexType name="customerLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverLogin">
+<xs:sequence>
+<xs:element name="dr" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driver">
+<xs:complexContent>
+<xs:extension base="tns:person">
+<xs:sequence>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="driverLoginResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>

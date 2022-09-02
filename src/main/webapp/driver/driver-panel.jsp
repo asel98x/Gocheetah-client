@@ -1,6 +1,6 @@
 <%-- 
-    Document   : customer-panel
-    Created on : Sep 2, 2022, 1:45:56 AM
+    Document   : driver-panel
+    Created on : Sep 2, 2022, 4:55:10 PM
     Author     : asel
 --%>
 
@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>CUstomer Panel</title>
+    <title>Driver panel</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
@@ -28,11 +28,10 @@
             response.setHeader("pragma", "no-cache");
             response.setHeader("Expires", "0");
             
-            if(session.getAttribute("mobile")==null){
-                response.sendRedirect("customer-login.jsp");
+            if(session.getAttribute("NIC")==null){
+                response.sendRedirect("driver-login.jsp");
             }
     %>
-    
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #e9b546;">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
@@ -58,7 +57,7 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #233143;">Profile</h3>
+                    <h3 class="text-dark mb-4" style="color: #233143;">Panel</h3>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">

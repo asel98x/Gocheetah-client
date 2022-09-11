@@ -1,8 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.gocheetah.mycompany.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.gocheetah.mycompany.com/">
 
+<xs:element name="AdminList" type="tns:AdminList"/>
+
+<xs:element name="AdminListResponse" type="tns:AdminListResponse"/>
+
+<xs:element name="DriverList" type="tns:DriverList"/>
+
+<xs:element name="DriverListResponse" type="tns:DriverListResponse"/>
+
+<xs:element name="addAdmin" type="tns:addAdmin"/>
+
+<xs:element name="addAdminResponse" type="tns:addAdminResponse"/>
+
 <xs:element name="addBranch" type="tns:addBranch"/>
 
 <xs:element name="addBranchResponse" type="tns:addBranchResponse"/>
+
+<xs:element name="addDriver" type="tns:addDriver"/>
+
+<xs:element name="addDriverResponse" type="tns:addDriverResponse"/>
 
 <xs:element name="addVehicle" type="tns:addVehicle"/>
 
@@ -20,6 +36,10 @@
 
 <xs:element name="branchesListResponse" type="tns:branchesListResponse"/>
 
+<xs:element name="customerList" type="tns:customerList"/>
+
+<xs:element name="customerListResponse" type="tns:customerListResponse"/>
+
 <xs:element name="customerLogin" type="tns:customerLogin"/>
 
 <xs:element name="customerLoginResponse" type="tns:customerLoginResponse"/>
@@ -28,9 +48,21 @@
 
 <xs:element name="customerSignupResponse" type="tns:customerSignupResponse"/>
 
+<xs:element name="deleteAdmin" type="tns:deleteAdmin"/>
+
+<xs:element name="deleteAdminResponse" type="tns:deleteAdminResponse"/>
+
 <xs:element name="deleteBranch" type="tns:deleteBranch"/>
 
 <xs:element name="deleteBranchResponse" type="tns:deleteBranchResponse"/>
+
+<xs:element name="deleteCustomer" type="tns:deleteCustomer"/>
+
+<xs:element name="deleteCustomerResponse" type="tns:deleteCustomerResponse"/>
+
+<xs:element name="deleteDriver" type="tns:deleteDriver"/>
+
+<xs:element name="deleteDriverResponse" type="tns:deleteDriverResponse"/>
 
 <xs:element name="deleteVehicle" type="tns:deleteVehicle"/>
 
@@ -44,11 +76,31 @@
 
 <xs:element name="driverLoginResponse" type="tns:driverLoginResponse"/>
 
+<xs:element name="findDriverVehicleList" type="tns:findDriverVehicleList"/>
+
+<xs:element name="findDriverVehicleListResponse" type="tns:findDriverVehicleListResponse"/>
+
+<xs:element name="getAdmin" type="tns:getAdmin"/>
+
+<xs:element name="getAdminResponse" type="tns:getAdminResponse"/>
+
 <xs:element name="getBranch" type="tns:getBranch"/>
 
 <xs:element name="getBranchResponse" type="tns:getBranchResponse"/>
 
+<xs:element name="getCustomer" type="tns:getCustomer"/>
+
+<xs:element name="getCustomerResponse" type="tns:getCustomerResponse"/>
+
+<xs:element name="getDriver" type="tns:getDriver"/>
+
+<xs:element name="getDriverResponse" type="tns:getDriverResponse"/>
+
 <xs:element name="getVehicle" type="tns:getVehicle"/>
+
+<xs:element name="getVehicleCategoryh" type="tns:getVehicleCategoryh"/>
+
+<xs:element name="getVehicleCategoryhResponse" type="tns:getVehicleCategoryhResponse"/>
 
 <xs:element name="getVehicleResponse" type="tns:getVehicleResponse"/>
 
@@ -56,9 +108,25 @@
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
+<xs:element name="updateAdmin" type="tns:updateAdmin"/>
+
+<xs:element name="updateAdminResponse" type="tns:updateAdminResponse"/>
+
+<xs:element name="updateDriver" type="tns:updateDriver"/>
+
+<xs:element name="updateDriverResponse" type="tns:updateDriverResponse"/>
+
+<xs:element name="updateVehicle" type="tns:updateVehicle"/>
+
+<xs:element name="updateVehicleResponse" type="tns:updateVehicleResponse"/>
+
 <xs:element name="updatedBranch" type="tns:updatedBranch"/>
 
 <xs:element name="updatedBranchResponse" type="tns:updatedBranchResponse"/>
+
+<xs:element name="updatedCustomer" type="tns:updatedCustomer"/>
+
+<xs:element name="updatedCustomerResponse" type="tns:updatedCustomerResponse"/>
 
 <xs:element name="updatedVehicleCategory" type="tns:updatedVehicleCategory"/>
 
@@ -84,52 +152,18 @@
 
 <xs:element name="viewVehiclesResponse" type="tns:viewVehiclesResponse"/>
 
-<xs:complexType name="addVehicle">
+<xs:complexType name="deleteDriver">
 <xs:sequence>
-<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
+<xs:element name="cs" type="tns:driver" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="vehicle">
-<xs:sequence>
-<xs:element name="branch" type="xs:string" minOccurs="0"/>
-<xs:element name="category" type="xs:string" minOccurs="0"/>
-<xs:element name="chasiNo" type="xs:string" minOccurs="0"/>
-<xs:element name="driver" type="xs:string" minOccurs="0"/>
-<xs:element name="noPlate" type="xs:string" minOccurs="0"/>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addVehicleResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicle">
-<xs:sequence>
-<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicleResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="adminLogin">
-<xs:sequence>
-<xs:element name="ad" type="tns:admin" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="admin">
+<xs:complexType name="driver">
 <xs:complexContent>
 <xs:extension base="tns:person">
 <xs:sequence>
-<xs:element name="adminId" type="xs:int"/>
+<xs:element name="driverID" type="xs:int"/>
+<xs:element name="vehicle" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
@@ -149,7 +183,7 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="adminLoginResponse">
+<xs:complexType name="deleteDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -191,28 +225,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="viewVehicles">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="viewVehiclesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteBranch">
-<xs:sequence>
-<xs:element name="bn" type="tns:branchCategory" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteBranchResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="customerLogin">
 <xs:sequence>
 <xs:element name="cs" type="tns:customer" minOccurs="0"/>
@@ -237,7 +249,7 @@
 
 <xs:complexType name="getVehicle">
 <xs:sequence>
-<xs:element name="v" type="xs:int"/>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -247,20 +259,44 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="vehicle">
+<xs:sequence>
+<xs:element name="branch" type="xs:string" minOccurs="0"/>
+<xs:element name="category" type="xs:string" minOccurs="0"/>
+<xs:element name="chasiNo" type="xs:string" minOccurs="0"/>
+<xs:element name="driver" type="xs:string" minOccurs="0"/>
+<xs:element name="noPlate" type="xs:string" minOccurs="0"/>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addAdmin">
+<xs:sequence>
+<xs:element name="ad" type="tns:admin" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="admin">
+<xs:complexContent>
+<xs:extension base="tns:person">
+<xs:sequence>
+<xs:element name="adminId" type="xs:int"/>
+<xs:element name="type" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="addAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="driverLogin">
 <xs:sequence>
 <xs:element name="dr" type="tns:driver" minOccurs="0"/>
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="driver">
-<xs:complexContent>
-<xs:extension base="tns:person">
-<xs:sequence>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
-</xs:extension>
-</xs:complexContent>
 </xs:complexType>
 
 <xs:complexType name="driverLoginResponse">
@@ -281,15 +317,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="hello">
+<xs:complexType name="updateVehicle">
 <xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="helloResponse">
+<xs:complexType name="updateVehicleResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
+<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -315,37 +351,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicleCategory">
-<xs:sequence>
-<xs:element name="vc" type="tns:vehicleCat" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicleCategoryResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getBranch">
 <xs:sequence>
-<xs:element name="bn" type="xs:int"/>
+<xs:element name="bn" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="getBranchResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:branchCategory" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="vehicleList">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="vehicleListResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -361,13 +375,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="vehicleCategoryList">
+<xs:complexType name="AdminList">
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="vehicleCategoryListResponse">
+<xs:complexType name="AdminListResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:vehicleCat" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:admin" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -383,6 +397,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="deleteAdmin">
+<xs:sequence>
+<xs:element name="ad" type="tns:admin" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="viewVehicleCateories">
 <xs:sequence/>
 </xs:complexType>
@@ -390,6 +416,248 @@
 <xs:complexType name="viewVehicleCateoriesResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:vehicleCat" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addVehicle">
+<xs:sequence>
+<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addVehicleResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomer">
+<xs:sequence>
+<xs:element name="cs" type="tns:customer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicle">
+<xs:sequence>
+<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomer">
+<xs:sequence>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLogin">
+<xs:sequence>
+<xs:element name="ad" type="tns:admin" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriver">
+<xs:sequence>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewVehicles">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="viewVehiclesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateDriver">
+<xs:sequence>
+<xs:element name="dr" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBranch">
+<xs:sequence>
+<xs:element name="bn" type="tns:branchCategory" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBranchResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatedCustomer">
+<xs:sequence>
+<xs:element name="cs" type="tns:customer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatedCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAdmin">
+<xs:sequence>
+<xs:element name="dr" type="tns:admin" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdmin">
+<xs:sequence>
+<xs:element name="searach" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:admin" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleCategory">
+<xs:sequence>
+<xs:element name="vc" type="tns:vehicleCat" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleCategoryResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customerList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="customerListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customer" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleCategoryh">
+<xs:sequence>
+<xs:element name="srch" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleCategoryhResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicleCat" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vehicleList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="vehicleListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addDriver">
+<xs:sequence>
+<xs:element name="dr" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DriverList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="DriverListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:driver" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vehicleCategoryList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="vehicleCategoryListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicleCat" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDriverVehicleList">
+<xs:sequence>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findDriverVehicleListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

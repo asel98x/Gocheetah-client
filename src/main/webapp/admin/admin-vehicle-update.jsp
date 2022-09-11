@@ -31,19 +31,20 @@
         RequestDispatcher dispatcher = null;
 
         Vehicle vh = new Vehicle();
-        int id = Integer.parseInt(request.getParameter("vehicleDataPass"));
-        vh = proxy.getVehicle(id);
+        BranchCategory bc = new BranchCategory();
+        String search = request.getParameter("vehicleDataPass");
+        vh = proxy.getVehicle(search);
 //
         String chasi = vh.getChasiNo();
         String noPlate = vh.getNoPlate();
         String category = vh.getCategory();
         String branch = vh.getBranch();
-         String driverID = vh.getDriver();
+        String driverID = vh.getDriver();
 //
 
-        
     %>
     <body>
+        <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
         <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
@@ -51,31 +52,45 @@
                         <div class="card mb-5">
                             <div class="card-body p-sm-5">
                                 <h2 class="text-center mb-4">Manage Vehicle</h2>
-                                <form action="" method="post">
-                                    <div class="mb-3"><input class="form-control" type="text" id="vehiIDTXT" name="vehiIDTXT" placeholder="" value="<%out.print(id);%>" readonly></div>
+                                <form action="p-vehicle-update.jsp" method="post">
+                                    <div class="mb-3"><input class="form-control" type="text" id="vehiIDTXT" name="vehiIDTXT" placeholder="" value="<%out.print(search);%>" readonly></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="chasiTxt" name="chasiTxt" value="<%out.print(chasi);%>" placeholder="Chasi Number" required=""></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="noPlateTxt" value="<%out.print(noPlate);%>" placeholder="Number Plate" required=""></div>
                                     <div class="mb-3"><select class="form-select" required="" name="VehicleCategortSelect">
 
                                             <%
-                                                if(category.getselected){
-                                                
-                                                }
                                                 for (Vehicle v : proxy.viewVehicles()) {
-                                                    out.print("<option selected=\"\">" + v.getCategory() + "</option>");
+                                                    if (vh.getCategory().equals(v.getCategory())) {
+
+                                                        out.print("<option selected=\"\">" + v.getCategory() + "</option>");
+
+                                                    } else {
+                                                        out.print("<option>" + v.getCategory() + "</option>");
+                                                    }
+                                                    //
                                                 }
                                             %>
                                         </select></div>
-                                    <div class="mb-3"><select class="form-select" required="">
-                                                
-                                            <%          for (BranchCategory bn : proxy.viewBranches()) {
-                                                    out.print("<option name=\"branch\" selected=\"\">" + bn.getLocation() + "</option>");
+                                    <div class="mb-3"><select class="form-select" name="branch" required="">
+
+                                            <%      for (BranchCategory b : proxy.viewBranches()) {
+                                                        if (branch.equals(b.getLocation())) {
+                                                        
+                                                        out.print("<option selected=\"\">" + b.getLocation() + "</option>");
+                                                        
+                                                    } else {
+                                                        out.print("<option>" + b.getLocation() + "</option>");
+                                                    }
                                                 }
+//                                                for (BranchCategory bn : proxy.viewBranches()) {
+//                                                    out.print("<option name=\"branch\" selected=\"\">" + bn.getLocation() + "</option>");
+//                                                }
+
                                             %> 
                                         </select></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="driverIDTXT" name="driverIDTXT" value="<%out.print(driverID);%>" placeholder="Driver ID" required=""></div>
-                                    <div style="padding-bottom: 10px;"><button class="btn btn-primary d-block w-100" type="submit" style="background: #e9b546;border-color: #e9b546;">Update</button></div>
-                                    
+                                    <div style="padding-bottom: 10px;"><button class="btn btn-primary d-block w-100" type="submit"  style="background: #e9b546;border-color: #e9b546;">Update</button></div>
+
                                 </form>
                             </div>
                         </div>
@@ -88,5 +103,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script src="../assets/js/theme.js"></script>
     </body>
-
+    <script type="text/javascript">
+        var status = document.getElementById("status2").value;
+        if (status == "success") {
+            swal("congratulations!", "You are successfully registered", "success");
+        } else if (status == "failed") {
+            swal("OOps!", "Username or Password is wrong", "error");
+        }
+    </script>
 </html>

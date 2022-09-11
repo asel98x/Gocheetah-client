@@ -26,7 +26,7 @@
             System.out.println(branchID);
             System.out.println(location);
             proxy.updatedBranch(bc);
-            response.sendRedirect("../admin-others2.jsp");
+            response.sendRedirect("../admin-others2.jsp#tab-1");
             System.out.println("work");
         } catch (Exception e) {
             System.out.println(e);

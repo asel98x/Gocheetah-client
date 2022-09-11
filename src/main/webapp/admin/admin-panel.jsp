@@ -39,9 +39,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse"><span><i class="fas fa-shuttle-van"></i>Panel</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-users.html"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-others.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-panel.jsp"><span><i class="fas fa-shuttle-van"></i>Panel</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                 </ul>
             </div>

@@ -21,7 +21,7 @@
     try {
             System.out.println(branchID);
             proxy.deleteBranch(bc);
-            response.sendRedirect("../admin-others2.jsp");
+            response.sendRedirect("../admin-others2.jsp#tab-1");
         } catch (Exception e) {
         System.out.println(e);
         }

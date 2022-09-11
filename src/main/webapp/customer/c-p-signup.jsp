@@ -38,7 +38,7 @@
             Decoder decoder = Base64.getDecoder();
             byte[] bytes = decoder.decode(encryptedPword);
 
-            if (name.equals("") || !address.equals("") || !email.equals("") || !nic.equals("") || !password.equals("")) {
+            if (!name.equals("") || !address.equals("") || !email.equals("") || !nic.equals("") || !password.equals("")) {
 
                 //System.out.println("good");
                 try {

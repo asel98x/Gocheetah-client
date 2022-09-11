@@ -21,7 +21,7 @@
     try {
             System.out.println(vehicleID);
             proxy.deleteVehicle(vh);
-            response.sendRedirect("../admin-others2.jsp");
+            response.sendRedirect("../admin-others2.jsp#tab-3");
         } catch (Exception e) {
         System.out.println(e);
         }

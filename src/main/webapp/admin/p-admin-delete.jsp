@@ -1,10 +1,10 @@
 <%-- 
-    Document   : p-vehicleCategory-delete
-    Created on : Sep 5, 2022, 9:42:25 PM
+    Document   : p-admin-delete
+    Created on : Sep 9, 2022, 10:53:04 PM
     Author     : asel
 --%>
 
-<%@page import="service.VehicleCat"%>
+<%@page import="service.Admin"%>
 <%@page import="service.GocheetahWebService"%>
 <%@page import="service.GocheetahWebService_Service"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,20 +12,17 @@
     GocheetahWebService_Service service = new GocheetahWebService_Service();
     GocheetahWebService proxy = service.getGocheetahWebServicePort();
     RequestDispatcher dispatcher = null;
-
-    VehicleCat vc = new VehicleCat();
-    int VehicleCatID = Integer.parseInt(request.getParameter("vehicleListIDDelete"));
-    vc.setVehicleCatId(VehicleCatID);
-
+    
+    Admin ad = new Admin();
+    int id = Integer.parseInt(request.getParameter("AdminID"));
+    ad.setAdminId(id);
+    
     if (true) {
         try {
-            System.out.println(VehicleCatID);
-            proxy.deleteVehicleCategory(vc);
-            response.sendRedirect("../admin-others2.jsp#tab-2");
+            proxy.deleteAdmin(ad);
+            response.sendRedirect("../admin-users.jsp#tab-1");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-
-
 %>

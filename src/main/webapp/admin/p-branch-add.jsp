@@ -23,7 +23,7 @@
             System.out.println(location);
             bc.setLocation(location);
             proxy.addBranch(bc);
-            response.sendRedirect("../admin-others2.jsp");       
+            response.sendRedirect("../admin-others2.jsp#tab-1");       
             System.out.println("work");
         } catch (Exception e) {
             System.out.println(e);

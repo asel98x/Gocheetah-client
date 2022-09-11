@@ -29,7 +29,7 @@
             vh.setBranch(branch);
             vh.setDriver(driverID);
             proxy.addVehicle(vh);
-            response.sendRedirect("../admin-others2.jsp");
+            response.sendRedirect("../admin-others2.jsp#tab-3");
         } catch (Exception e) {
         }
     }

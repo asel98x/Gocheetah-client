@@ -30,6 +30,15 @@
     </head>
 
     <body id="page-top">
+        <%
+//            response.setHeader("Cache-Control", "no-store, must-revalidate");
+//            response.setHeader("pragma", "no-cache");
+//            response.setHeader("Expires", "0");
+//            
+//            if(session.getAttribute("email")==null){
+//                response.sendRedirect("admin-login.jsp");
+//            }
+    %>
 
         <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
         <%
@@ -46,6 +55,7 @@
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/admin-panel.jsp"><span><i class="fas fa-shuttle-van"></i>Panel</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/admin-destination.jsp"><span><i class="fas fa-map-marked-alt"></i>Destinations</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     </ul>
                 </div>

@@ -38,7 +38,7 @@
 //            if(session.getAttribute("email")==null){
 //                response.sendRedirect("admin-login.jsp");
 //            }
-    %>
+%>
 
         <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
         <%
@@ -464,6 +464,7 @@
                                                                     </div>
                                                                     <div class="modal-body" style="text-align: left;">
                                                                         <form action="admin/p-vehicle-add.jsp" method="post">
+                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" id="picaddDiv" style="border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;"><img id="vehicleCategoryPic-3" style="background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;" src="assets/img/threewheel.png"><button class="btn" id="vehiclePicAddBtn-3" type="button" style="margin-left: 12px;"><i class="far fa-image"></i></button></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-newspaper" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="chassisNo" name="chassisNo" placeholder="Chassis Number" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-window-maximize" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate" name="numberPlate" placeholder="Number Plate" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-car text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" name="category" style="border-color: rgba(133,135,150,0);">
@@ -473,6 +474,7 @@
                                                                                         }
                                                                                     %>
                                                                                 </select></div>
+                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-caravan" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate-4" name="VehicleName" placeholder="Vehicle name" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-map-marker-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" name="branchlist" style="border-color: rgba(133,135,150,0);">
                                                                                     <option value="12" selected="">Colombo</option>
                                                                                     <%          for (BranchCategory bn : proxy.viewBranches()) {
@@ -481,6 +483,10 @@
                                                                                     %> 
                                                                                 </select></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-address-card" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="driverID" name="driverID" placeholder="Driver ID" required="" style="border-color: rgba(133,135,150,0);"></div>
+                                                                            <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-eye text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" name="availability" style="border-color: rgba(133,135,150,0);">
+                                                                                    <option value="Available" selected="">Available</option>
+                                                                                    <option value="">Unavailable</option>
+                                                                                </select></div>
                                                                             <div><button class="btn btn-primary d-block w-100" id="CreateVehicleBtn" type="submit" style="background: #e9b546;border-color: #e9b546;">Create</button></div>
                                                                         </form>
                                                                     </div>
@@ -503,6 +509,7 @@
                                                             <th style="color: rgb(152,152,152);">category</th>
                                                             <th style="color: rgb(152,152,152);">Branch</th>
                                                             <th style="color: rgb(152,152,152);">Driver ID</th>
+                                                            <th style="color: rgb(152,152,152);">Availability</th>
                                                             <th style="color: rgb(152,152,152);">Manage</th>
                                                         </tr>
                                                     </thead>
@@ -544,6 +551,11 @@
                                                                     out.print("<td>");
                                                                     out.print("<div>");
                                                                     out.print("<p id=\"vehivleBranch\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\">" + vh.getDriver() + "</p>");
+                                                                    out.print("</div>");
+                                                                    out.print("</td>");
+                                                                    out.print("<td>");
+                                                                    out.print("<div>");
+                                                                    out.print("<p id=\"availabilityT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"availabilityT\">" + vh.getAvailability() + "</p>");
                                                                     out.print("</div>");
                                                                     out.print("</td>");
                                                                     //out.print("</form method=\"post\" action=\"admin/admin-vehicle-update.jsp\">");
@@ -612,6 +624,11 @@
                                                                 out.print("<td>");
                                                                 out.print("<div>");
                                                                 out.print("<p id=\"vehivleBranch\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\">" + vh.getDriver() + "</p>");
+                                                                out.print("</div>");
+                                                                out.print("</td>");
+                                                                out.print("<td>");
+                                                                out.print("<div>");
+                                                                out.print("<p id=\"availabilityT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"availabilityT\">" + vh.getAvailability() + "</p>");
                                                                 out.print("</div>");
                                                                 out.print("</td>");
                                                                 //out.print("</form method=\"post\" action=\"admin/admin-vehicle-update.jsp\">");

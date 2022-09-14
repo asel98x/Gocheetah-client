@@ -21,6 +21,7 @@
     String address = request.getParameter("driverAddress");
     int mobile = Integer.parseInt(request.getParameter("driverMobile"));
     String nic = request.getParameter("driverNIC");
+    String licence = request.getParameter("Licence");
     String DOB = request.getParameter("driverDOB");
     int age = Integer.parseInt(request.getParameter("driverAge"));
     String email = request.getParameter("driverEmail");
@@ -36,6 +37,7 @@
             dr.setAddress(address);
             dr.setMobile(mobile);
             dr.setNic(nic);
+            dr.setLicence(licence);
             dr.setDob(DOB);
             dr.setAge(age);
             dr.setEmail(email);

@@ -29,7 +29,9 @@
         try {
             if (proxy.adminLogin(ad)) {
                 session.setAttribute("email", email);
-                response.sendRedirect("admin-panel.jsp");
+                //response.sendRedirect("admin-panel.jsp");
+                dispatcher = request.getRequestDispatcher("admin-panel.jsp");
+                request.setAttribute("status", "success");
             } else {
                 System.out.println("error");
                 dispatcher = request.getRequestDispatcher("admin-login.jsp");

@@ -17,7 +17,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Table - Brand</title>
+        <title>admin users</title>
+       
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
         <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -39,8 +40,8 @@
 //            if(session.getAttribute("email")==null){
 //                response.sendRedirect("admin-login.jsp");
 //            }
-    %>
-        <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
+        %>
+<input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
         <%
             GocheetahWebService_Service service = new GocheetahWebService_Service();
             GocheetahWebService proxy = service.getGocheetahWebServicePort();
@@ -105,6 +106,7 @@
                                                                     </div>
                                                                     <div class="modal-body" style="text-align: left;">
                                                                         <form action="admin/p-admin-add.jsp" method="post">
+                                                                            
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-user-tie" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="adminName" name="adminName" placeholder="Name" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-location-arrow" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="adminAddress" name="adminAddress" placeholder="Address" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="placeholder form-control" type="tel" id="adminMobile" name="adminMobile" style="border-color: rgba(133,135,150,0);background: rgba(133,135,150,0);" placeholder="Mobile" required="" minlength="10" maxlength="10"></div>
@@ -295,6 +297,7 @@
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-location-arrow" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="driverAddress" name="driverAddress" placeholder="Address" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="placeholder form-control" type="tel" id="driverMobile" name="driverMobile" style="border-color: rgba(133,135,150,0);background: rgba(133,135,150,0);" placeholder="Mobile" required="" minlength="10" maxlength="10"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-address-card" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="driverNIC" name="driverNIC" placeholder="NIC" required="" style="border-color: rgba(133,135,150,0);" minlength="10" maxlength="10"></div>
+                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-address-card" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="driverNIC-1" name="Licence" placeholder="Licence" required="" style="border-color: rgba(133,135,150,0);" minlength="10" maxlength="10"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" id="driverDOB" name="driverDOB" type="date" required=""></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-user-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="driverAge" name="driverAge" placeholder="Age" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-envelope-fill" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;">
@@ -442,9 +445,9 @@
                                                 <div class="col-md-6 text-nowrap">
                                                     <form action="admin-users.jsp#tab-3" method="post">
                                                         <div id="dataTable_length-3" class="dataTables_length" aria-controls="dataTable"><label class="form-label d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-start align-items-lg-center justify-content-xl-start align-items-xl-center justify-content-xxl-center align-items-xxl-center"><input type="search" id="customerSearch" name="customerSearch" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" style="width: 200px;"><button class="btn btn-primary" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="customerSearchBtn" type="submit" style="background: rgba(78,115,223,0);border-color: rgba(255,255,255,0);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="margin-top: 0px;margin-left: 0px;width: 16px;color: rgb(197,195,195);">
-                                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-                                                                </svg></button></label></div>
-                                                        </form>
+                                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                                                    </svg></button></label></div>
+                                                    </form>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="text-md-end dataTables_filter" id="dataTable_filter-3"><a class="btn btn-primary btn-lg" role="button" id="createCustomerBtn" href="#customerCreateModal" data-bs-toggle="modal" style="padding: 7px 0px;padding-top: 0px;padding-bottom: 0px;background: rgba(13,110,253,0);color: rgb(197,195,195);border-color: rgba(197,195,195,0);"><i class="fas fa-user-plus" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" title="Create New Customer"></i></a>
@@ -620,8 +623,9 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="alert/dist/sweetalert.css"><!-- comment -->
 
+
         <script type="text/javascript">
-            var status = document.getElementById("status").value;
+            var status = document.getElementById("status2").value;
             if (status == "success") {
                 swal("congratulations", "successfully registered", "success");
             } else if (status == "failed") {
@@ -643,13 +647,13 @@
             function customerDataPass(driver) {
                 $("#customerID").html(driver);
             }
-            
+
             var url = window.location.href;
-            
+
             function tabPass() {
 
                 var activeTab = url.substring(url.indexOf("#") + 1);
-                $('a[href="#'+ activeTab +'"]').tab('show');
+                $('a[href="#' + activeTab + '"]').tab('show');
             }
             if (url.includes("#")) {
                 tabPass();

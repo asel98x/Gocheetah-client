@@ -14,20 +14,24 @@
     RequestDispatcher dispatcher = null;
 
     Vehicle vh = new Vehicle();
+    String vehiName = request.getParameter("VehicleName");
     String chassi = request.getParameter("chassisNo");
     String noPlate = request.getParameter("numberPlate");
     String category = request.getParameter("category");
     String branch = request.getParameter("branchlist");
     String driverID = request.getParameter("driverID");
+    String availability = request.getParameter("availability");
 
     if (true) {
         try {
             
+            vh.setVehicleName(vehiName);
             vh.setChasiNo(chassi);
             vh.setNoPlate(noPlate);
             vh.setCategory(category);
             vh.setBranch(branch);
             vh.setDriver(driverID);
+            vh.setAvailability(availability);
             proxy.addVehicle(vh);
             response.sendRedirect("../admin-others2.jsp#tab-3");
         } catch (Exception e) {

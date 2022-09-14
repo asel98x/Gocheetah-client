@@ -38,9 +38,10 @@
         String chasi = vh.getChasiNo();
         String noPlate = vh.getNoPlate();
         String category = vh.getCategory();
+        String vehiName = vh.getVehicleName();
         String branch = vh.getBranch();
         String driverID = vh.getDriver();
-//
+        String availability = vh.getAvailability();
 
     %>
     <body>
@@ -53,6 +54,7 @@
                             <div class="card-body p-sm-5">
                                 <h2 class="text-center mb-4">Manage Vehicle</h2>
                                 <form action="p-vehicle-update.jsp" method="post">
+                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" id="picaddDiv" style="border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;"><img id="vehicleCategoryPic-3" style="background: url(&quot;../assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;" src="../assets/img/threewheel.png"><button class="btn" id="vehiclePicAddBtn-3" type="button" style="margin-left: 12px;"><i class="far fa-image"></i></button></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="vehiIDTXT" name="vehiIDTXT" placeholder="" value="<%out.print(search);%>" readonly></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="chasiTxt" name="chasiTxt" value="<%out.print(chasi);%>" placeholder="Chasi Number" required=""></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="noPlateTxt" value="<%out.print(noPlate);%>" placeholder="Number Plate" required=""></div>
@@ -71,6 +73,7 @@
                                                 }
                                             %>
                                         </select></div>
+                                    <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt-1" name="VehicleName" value="<%out.print(vehiName);%>" placeholder="VehicleName" required=""></div>
                                     <div class="mb-3"><select class="form-select" name="branch" required="">
 
                                             <%      for (BranchCategory b : proxy.viewBranches()) {
@@ -89,6 +92,10 @@
                                             %> 
                                         </select></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="driverIDTXT" name="driverIDTXT" value="<%out.print(driverID);%>" placeholder="Driver ID" required=""></div>
+                                    <div class="mb-3"><select class="form-select" required="" name="availability">
+                                        <option value="Available"<%if(vh.getAvailability().equals("Available"))out.print("selected");%> selected="">Available</option>
+                                        <option value="Unavailable"<%if(vh.getAvailability().equals("Unavailable"))out.print("selected");%>>Unavailable</option>
+                                    </select></div>
                                     <div style="padding-bottom: 10px;"><button class="btn btn-primary d-block w-100" type="submit"  style="background: #e9b546;border-color: #e9b546;">Update</button></div>
 
                                 </form>

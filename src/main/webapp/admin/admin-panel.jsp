@@ -23,14 +23,15 @@
 </head>
 
 <body id="page-top">
+    <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
     <%
-            response.setHeader("Cache-Control", "no-store, must-revalidate");
-            response.setHeader("pragma", "no-cache");
-            response.setHeader("Expires", "0");
-            
-            if(session.getAttribute("email")==null){
-                response.sendRedirect("admin-login.jsp");
-            }
+//            response.setHeader("Cache-Control", "no-store, must-revalidate");
+//            response.setHeader("pragma", "no-cache");
+//            response.setHeader("Expires", "0");
+//            
+//            if(session.getAttribute("email")==null){
+//                response.sendRedirect("admin-login.jsp");
+//            }
     %>
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #e9b546;">
@@ -75,6 +76,15 @@
     <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="../assets/js/theme.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="alert/dist/sweetalert.css"><!-- comment -->
+        
+        <script type="text/javascript">
+            var status = document.getElementById("status2").value;
+            if(status=="success"){
+                swal("congratulations!","You are successfully registered","success");
+            }
+        </script>
 </body>
 
 </html>

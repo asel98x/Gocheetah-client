@@ -45,6 +45,9 @@
             ad.setType(type);
             proxy.addAdmin(ad);
             response.sendRedirect("../admin-users.jsp#tab-1");
+//            dispatcher = request.getRequestDispatcher("../admin-users.jsp");
+//                request.setAttribute("status", "success");
+//                dispatcher.forward(request, response);
         } catch (Exception e) {
         }
     } else {

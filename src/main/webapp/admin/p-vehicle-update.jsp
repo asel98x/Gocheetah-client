@@ -14,19 +14,24 @@
     RequestDispatcher dispatcher = null;
     
     Vehicle vh = new Vehicle();
+    
     int vehiCatID = Integer.parseInt(request.getParameter("vehiIDTXT"));
     String chassi = request.getParameter("chasiTxt");
     String noPlate = request.getParameter("noPlateTxt");
     String vehivleCat = request.getParameter("VehicleCategortSelect");
+    String vehiName = request.getParameter("VehicleName");
     String branch = request.getParameter("branch");
     String driverID = request.getParameter("driverIDTXT");
+    String availability = request.getParameter("availability");
     
     vh.setVehicleId(vehiCatID);
     vh.setChasiNo(chassi);
     vh.setNoPlate(noPlate);
     vh.setCategory(vehivleCat);
+    vh.setVehicleName(vehiName);
     vh.setBranch(branch);
     vh.setDriver(driverID);
+    vh.setAvailability(availability);
     
     if (true) {
         try {

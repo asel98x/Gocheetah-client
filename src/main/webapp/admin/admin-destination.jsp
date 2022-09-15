@@ -97,12 +97,7 @@
                                                         </div>
                                                         <div class="modal-body" style="text-align: left;">
                                                             <form action="p-destination-add.jsp" method="post">
-                                                                <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-car" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" id="branchList" name="VehicleList" required="" style="border-color: rgba(133,135,150,0);">
-                                                                        <%          for (VehicleCat vc : proxy.viewVehicleCateories()) {
-                                                                                out.print("<option selected=\"\">" + vc.getVehicleCategory() + "</option>");
-                                                                            }
-                                                                        %>
-                                                                    </select></div>
+                                                                
                                                                 <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" id="branchList-4" name="branchList" required="" style="border-color: rgba(133,135,150,0);">
                                                                         <%          for (BranchCategory bn : proxy.viewBranches()) {
                                                                                 out.print("<option name=\"branch\" selected=\"\">" + bn.getLocation() + "</option>");
@@ -126,11 +121,10 @@
                                         <thead>
                                             <tr>
                                                 <th style="color: rgb(152,152,152);">Id</th>
-                                                <th style="color: rgb(152,152,152);">Vehicle</th>
                                                 <th style="color: rgb(152,152,152);">Branch</th>
                                                 <th style="color: rgb(152,152,152);">Pickup</th>
                                                 <th style="color: rgb(152,152,152);">Drop</th>
-                                                <th style="color: rgb(152,152,152);">Price</th>
+                                                <th style="color: rgb(152,152,152);">Distance</th>
                                                 <th style="color: rgb(152,152,152);">Manage</th>
                                             </tr>
                                         </thead>
@@ -148,11 +142,6 @@
                                                         out.print("</td>");
                                                         out.print("<td>");
                                                         out.print("<div>");
-                                                        out.print("<p id=\"VEhicaleT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"VEhicaleT\">" + ds.getDVehicle() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
                                                         out.print("<p id=\"branchT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"branchT\">" + ds.getDBranch() + "</p>");
                                                         out.print("</div>");
                                                         out.print("</td>");
@@ -168,7 +157,7 @@
                                                         out.print("</td>");
                                                         out.print("<td>");
                                                         out.print("<div>");
-                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDPrice() + "</p>");
+                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance()+ " Km</p>");
                                                         out.print("</div>");
                                                         out.print("</td>");
                                                         out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass="+ds.getDestinationID()+"\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass="+ds.getDestinationID()+"\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");
@@ -186,11 +175,6 @@
                                                         out.print("</td>");
                                                         out.print("<td>");
                                                         out.print("<div>");
-                                                        out.print("<p id=\"VEhicaleT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"VEhicaleT\">" + ds.getDVehicle() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
                                                         out.print("<p id=\"branchT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"branchT\">" + ds.getDBranch() + "</p>");
                                                         out.print("</div>");
                                                         out.print("</td>");
@@ -206,7 +190,7 @@
                                                         out.print("</td>");
                                                         out.print("<td>");
                                                         out.print("<div>");
-                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDPrice() + "</p>");
+                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance()+ " Km</p>");
                                                         out.print("</div>");
                                                         out.print("</td>");
                                                         out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass="+ds.getDestinationID()+"\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass="+ds.getDestinationID()+"\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");

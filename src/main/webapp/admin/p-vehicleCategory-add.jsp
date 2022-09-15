@@ -16,11 +16,13 @@
 
     VehicleCat vc = new VehicleCat();
     String category = request.getParameter("vehiCat");
+    String presentage = request.getParameter("presentage");
 
     if (true) {
         try {
             System.out.println(category);
             vc.setVehicleCategory(category);
+            vc.setPresentage(presentage);
             proxy.addVehicleCategory(vc);
             response.sendRedirect("../admin-others2.jsp#tab-2"); 
         } catch (Exception e) {

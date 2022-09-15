@@ -18,15 +18,14 @@
     String branch = request.getParameter("branchList");
     String pickup = request.getParameter("pickup");
     String drop = request.getParameter("drop");
-    Float price = Float.parseFloat(request.getParameter("total"));
+    int price = Integer.parseInt(request.getParameter("total"));
 
     if (true) {
         try {
-            ds.setDVehicle(vehicle);
             ds.setDBranch(branch);
             ds.setDPickup(pickup);
             ds.setDDrop(drop);
-            ds.setDPrice(price);
+            ds.setDistance(price);
 
             proxy.addDstination(ds);
             response.sendRedirect("admin-destination.jsp");

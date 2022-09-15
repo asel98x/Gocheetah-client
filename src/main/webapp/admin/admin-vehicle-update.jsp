@@ -37,6 +37,8 @@
 //
         String chasi = vh.getChasiNo();
         String noPlate = vh.getNoPlate();
+        String seat = vh.getPassengers();
+        String type = vh.getType();
         String category = vh.getCategory();
         String vehiName = vh.getVehicleName();
         String branch = vh.getBranch();
@@ -58,6 +60,8 @@
                                     <div class="mb-3"><input class="form-control" type="text" id="vehiIDTXT" name="vehiIDTXT" placeholder="" value="<%out.print(search);%>" readonly></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="chasiTxt" name="chasiTxt" value="<%out.print(chasi);%>" placeholder="Chasi Number" required=""></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="noPlateTxt" value="<%out.print(noPlate);%>" placeholder="Number Plate" required=""></div>
+                                    <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="seat" value="<%out.print(seat);%>" placeholder="Seat capasity" required=""></div>
+                                    <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="type" value="<%out.print(type);%>" placeholder="Vehicle type" required=""></div>
                                     <div class="mb-3"><select class="form-select" required="" name="VehicleCategortSelect">
 
                                             <%

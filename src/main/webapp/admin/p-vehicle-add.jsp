@@ -18,6 +18,8 @@
     String chassi = request.getParameter("chassisNo");
     String noPlate = request.getParameter("numberPlate");
     String category = request.getParameter("category");
+    String type = request.getParameter("VehicleType");
+    String seat = request.getParameter("seat");
     String branch = request.getParameter("branchlist");
     String driverID = request.getParameter("driverID");
     String availability = request.getParameter("availability");
@@ -29,6 +31,8 @@
             vh.setChasiNo(chassi);
             vh.setNoPlate(noPlate);
             vh.setCategory(category);
+            vh.setType(type);
+            vh.setPassengers(seat);
             vh.setBranch(branch);
             vh.setDriver(driverID);
             vh.setAvailability(availability);

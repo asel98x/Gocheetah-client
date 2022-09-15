@@ -279,8 +279,8 @@
                                                                     </div>
                                                                     <div class="modal-body" style="text-align: left;">
                                                                         <form action="admin/p-vehicleCategory-add.jsp" method="post">
-                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;"><img id="vehicleCategoryPic" style="background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;" src="assets/img/threewheel.png"><button class="btn" id="vehiclePicAddBtn" type="button" style="margin-left: 12px;"><i class="far fa-image"></i></button></div>
                                                                             <div class="d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-car-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="vehiCat" name="vehiCat" placeholder="Vehicle Category" required="" style="border-color: rgba(133,135,150,0);" autofocus=""></div>
+                                                                            <div class="d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-wallet" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="presentage" name="presentage" placeholder="price presentage" required="" style="border-color: rgba(133,135,150,0);" autofocus=""></div>
                                                                             <div><button class="btn btn-primary d-block w-100" id="createVehicleCategoryBtn" type="submit" style="background: #e9b546;border-color: #e9b546;">Create</button></div>
                                                                         </form>
                                                                     </div>
@@ -298,7 +298,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th style="color: rgb(152,152,152);">ID</th>
-                                                            <th style="color: rgb(152,152,152);">Picture</th>
                                                             <th style="color: rgb(152,152,152);">Category</th>
                                                             <th style="color: rgb(152,152,152);">Manage</th>
                                                         </tr>
@@ -312,11 +311,6 @@
                                                                     out.print("<div class=\"d-lg-flex justify-content-lg-start align-items-lg-center\">");
                                                                     out.print("<p id=\"vehicleCatID\" style=\"margin-bottom: 0px;margin-left: 10px;\">" + vc.getVehicleCatId() + "</p>");
                                                                     out.print("</div>");
-                                                                    out.print("</div>");
-                                                                    out.print("</td>");
-                                                                    out.print("<td>");
-                                                                    out.print("<div>");
-                                                                    out.print("<div class=\"d-lg-flex justify-content-lg-start\"><img id=\"vehicleCatPic\" src=\"assets/img/yello%20car.jpg\" style=\"border-radius: 30pc;width: 40px;\"></div>");
                                                                     out.print("</div>");
                                                                     out.print("</td>");
                                                                     out.print("<td>");
@@ -335,9 +329,9 @@
                                                                     out.print("</div>");
                                                                     out.print("<div class=\"modal-body\" style=\"text-align: left;\">");
                                                                     out.print("<form action=\"admin/p-vehicalCategory-update.jsp\" method=\"post\">");
-                                                                    out.print("<div class=\"d-md-flex justify-content-md-center align-items-md-center mb-3\" style=\"border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;\"><img id=\"vehicleCategoryPic-1\" style=\"background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;\" src=\"assets/img/threewheel.png\"><button class=\"btn\" id=\"vehiclePicAddBtn-1\" type=\"button\" style=\"margin-left: 12px;\"><i class=\"far fa-image\"></i></button></div>");
                                                                     out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"far fa-id-card\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleCategoryIDT\" name=\"vehicleCategoryIDT\" value=\"" + vc.getVehicleCatId() + "\" placeholder=\"ID\" readonly style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                     out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-car-alt\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleCategoryT\" name=\"vehicleCategoryT\" value=\"" + vc.getVehicleCategory() + "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
+                                                                    out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-wallet\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehiclePresentage\" name=\"vehiclePresentage\" value=\"" + vc.getPresentage()+ "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                     out.print("<div><button class=\"btn btn-primary d-block w-100\" id=\"updateVehicleCategoryBtn-3\" type=\"submit\" style=\"background: #e9b546;border-color: #e9b546;margin-top: 5px;\">Update</button></div>");
                                                                     out.print("</form>");
                                                                     out.print("</div>");
@@ -353,7 +347,6 @@
                                                                     out.print("</div>");
                                                                     out.print("<div class=\"modal-body\" style=\"text-align: left;\">");
                                                                     out.print("<form action=\"admin/p-vehicleCategory-delete.jsp\" method=\"post\">");
-                                                                    out.print("<div class=\"d-md-flex justify-content-md-center align-items-md-center mb-3\" style=\"border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;\"><img id=\"vehicleCategoryPic-2\" style=\"background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;\" src=\"assets/img/threewheel.png\"><button class=\"btn\" id=\"vehiclePicAddBtn-2\" type=\"button\" style=\"margin-left: 12px;\"><i class=\"far fa-image\"></i></button></div>");
                                                                     out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"far fa-id-card\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleListIDDelete\" name=\"vehicleListIDDelete\" value=\"" + vc.getVehicleCatId() + "\" placeholder=\"Vihicale Category ID\" readonly style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                     out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-car-alt\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleListDelete\" name=\"vehicleList\" value=\"" + vc.getVehicleCategory() + "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                     out.print("<div><button class=\"btn btn-primary d-block w-100\" id=\"DeleteVehicleCategoryBtn\" type=\"submit\" style=\"background: var(--bs-red);margin-top: 5px;border-color: var(--bs-red);\">Delete</button></div>");
@@ -377,11 +370,6 @@
                                                                 out.print("</td>");
                                                                 out.print("<td>");
                                                                 out.print("<div>");
-                                                                out.print("<div class=\"d-lg-flex justify-content-lg-start\"><img id=\"vehicleCatPic\" src=\"assets/img/yello%20car.jpg\" style=\"border-radius: 30pc;width: 40px;\"></div>");
-                                                                out.print("</div>");
-                                                                out.print("</td>");
-                                                                out.print("<td>");
-                                                                out.print("<div>");
                                                                 out.print("<div class=\"d-lg-flex justify-content-lg-start\"></div>");
                                                                 out.print("<p id=\"VehivleCategory\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\">" + vc.getVehicleCategory() + "</p>");
                                                                 out.print("</div>");
@@ -396,9 +384,10 @@
                                                                 out.print("</div>");
                                                                 out.print("<div class=\"modal-body\" style=\"text-align: left;\">");
                                                                 out.print("<form action=\"admin/p-vehicalCategory-update.jsp\" method=\"post\">");
-                                                                out.print("<div class=\"d-md-flex justify-content-md-center align-items-md-center mb-3\" style=\"border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;\"><img id=\"vehicleCategoryPic-1\" style=\"background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;\" src=\"assets/img/threewheel.png\"><button class=\"btn\" id=\"vehiclePicAddBtn-1\" type=\"button\" style=\"margin-left: 12px;\"><i class=\"far fa-image\"></i></button></div>");
+                                                                
                                                                 out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"far fa-id-card\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleCategoryIDT\" name=\"vehicleCategoryIDT\" value=\"" + vc.getVehicleCatId() + "\" placeholder=\"ID\" readonly style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                 out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-car-alt\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleCategoryT\" name=\"vehicleCategoryT\" value=\"" + vc.getVehicleCategory() + "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
+                                                                out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-wallet\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehiclePresentage\" name=\"vehiclePresentage\" value=\"" + vc.getPresentage()+ "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                 out.print("<div><button class=\"btn btn-primary d-block w-100\" id=\"updateVehicleCategoryBtn-3\" type=\"submit\" style=\"background: #e9b546;border-color: #e9b546;margin-top: 5px;\">Update</button></div>");
                                                                 out.print("</form>");
                                                                 out.print("</div>");
@@ -414,7 +403,6 @@
                                                                 out.print("</div>");
                                                                 out.print("<div class=\"modal-body\" style=\"text-align: left;\">");
                                                                 out.print("<form action=\"admin/p-vehicleCategory-delete.jsp\" method=\"post\">");
-                                                                out.print("<div class=\"d-md-flex justify-content-md-center align-items-md-center mb-3\" style=\"border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;\"><img id=\"vehicleCategoryPic-2\" style=\"background: url(&quot;assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;\" src=\"assets/img/threewheel.png\"><button class=\"btn\" id=\"vehiclePicAddBtn-2\" type=\"button\" style=\"margin-left: 12px;\"><i class=\"far fa-image\"></i></button></div>");
                                                                 out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"far fa-id-card\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleListIDDelete\" name=\"vehicleListIDDelete\" value=\"" + vc.getVehicleCatId() + "\" placeholder=\"Vihicale Category ID\" readonly style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                 out.print("<div class=\"d-md-flex justify-content-md-start align-items-md-center mb-3\" style=\"border: 1px outset rgb(209,211,226);border-radius: 5.6px;\"><i class=\"fas fa-car-alt\" style=\"border-left-color: rgb(133, 135, 150);margin-left: 5px;\"></i><input class=\"form-control\" type=\"text\" id=\"vehicleListDelete\" name=\"vehicleList\" value=\"" + vc.getVehicleCategory() + "\" placeholder=\"Vihicale Category\" required=\"\" style=\"border-color: rgba(133,135,150,0);\"></div>");
                                                                 out.print("<div><button class=\"btn btn-primary d-block w-100\" id=\"DeleteVehicleCategoryBtn\" type=\"submit\" style=\"background: var(--bs-red);margin-top: 5px;border-color: var(--bs-red);\">Delete</button></div>");
@@ -474,7 +462,9 @@
                                                                                         }
                                                                                     %>
                                                                                 </select></div>
+                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-file-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate-4" name="VehicleType" placeholder="Vehicle type" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-caravan" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate-4" name="VehicleName" placeholder="Vehicle name" required="" style="border-color: rgba(133,135,150,0);"></div>
+                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-user-friends" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate-4" name="seat" placeholder="Seat capasity" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-map-marker-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" name="branchlist" style="border-color: rgba(133,135,150,0);">
                                                                                     <option value="12" selected="">Colombo</option>
                                                                                     <%          for (BranchCategory bn : proxy.viewBranches()) {
@@ -702,21 +692,14 @@
 
         <script type="text/javascript">
             function passBranchId(branch) {
-//            var id = $("#branchId").html();
-//            var name = $("#branchName").html();
-//            var str = "asel algama";
                 $("#brnchID2").html(branch);
                 $("#brnchLocation").val(branch);
-//            $("#BranhHeading-1").html(str);
             }
 
         </script>
 
         <script type="text/javascript">
             function deleteBranchId(branch) {
-//            var id = $("#branchId").html();
-//            var name = $("#branchName").html();
-//            var str = "asel algama";
                 $("#brnchIDDelete").html(branch);
 //            $("#BranhHeading-1").html(str);
             }
@@ -725,35 +708,24 @@
 
         <script type="text/javascript">
             function passVehicleCategoryId(branch) {
-//            var id = $("#branchId").html();
-//            var name = $("#branchName").html();
-//            var str = "asel algama";
                 $("#vehicleCategoryIDT").html(branch);
                 $("#vehicleCategoryT").val(branch);
-//            $("#BranhHeading-1").html(str);
+                $("#vehiclePresentage").val(branch);
             }
 
         </script>
 
         <script type="text/javascript">
             function DeleteCategoryId(branch) {
-//            var id = $("#branchId").html();
-//            var name = $("#branchName").html();
-//            var str = "asel algama";
                 $("#vehicleListIDDelete").html(branch);
                 $("#vehicleListDelete").val(branch);
-//            $("#BranhHeading-1").html(str);
             }
 
         </script>
 
         <script type="text/javascript">
             function Deletevehicle(branch) {
-//            var id = $("#branchId").html();
-//            var name = $("#branchName").html();
-//            var str = "asel algama";
                 $("#VehicleIdDeleteTxt").html(branch);
-//            $("#BranhHeading-1").html(str);
             }
 
         </script>

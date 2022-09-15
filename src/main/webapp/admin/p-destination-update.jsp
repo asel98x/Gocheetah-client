@@ -15,18 +15,16 @@
 
     Destination ds = new Destination();
     int ID = Integer.parseInt(request.getParameter("ID"));
-    String vehicle = request.getParameter("vehicle");
     String branch = request.getParameter("branch");
     String pickup = request.getParameter("pickup");
     String drop = request.getParameter("drop");
-    Float price = Float.parseFloat(request.getParameter("price"));
+    int price = Integer.parseInt(request.getParameter("price"));
 
     ds.setDestinationID(ID);
-    ds.setDVehicle(vehicle);
     ds.setDBranch(branch);
     ds.setDPickup(pickup);
     ds.setDDrop(drop);
-    ds.setDPrice(price);
+    ds.setDistance(price);
 
     if (true) {
         try {

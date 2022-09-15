@@ -20,6 +20,8 @@
     String noPlate = request.getParameter("noPlateTxt");
     String vehivleCat = request.getParameter("VehicleCategortSelect");
     String vehiName = request.getParameter("VehicleName");
+    String seat = request.getParameter("seat");
+    String type = request.getParameter("type");
     String branch = request.getParameter("branch");
     String driverID = request.getParameter("driverIDTXT");
     String availability = request.getParameter("availability");
@@ -28,6 +30,8 @@
     vh.setChasiNo(chassi);
     vh.setNoPlate(noPlate);
     vh.setCategory(vehivleCat);
+    vh.setType(type);
+    vh.setPassengers(seat);
     vh.setVehicleName(vehiName);
     vh.setBranch(branch);
     vh.setDriver(driverID);

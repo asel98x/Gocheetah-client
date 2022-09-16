@@ -36,21 +36,48 @@
         Driver dr = new Driver();
         BranchCategory bc = new BranchCategory();
         String search = request.getParameter("vehicleDataPass");
+
         vh = proxy.getVehicle(search);
 
         String vehiName = vh.getVehicleName();
         String type = vh.getType();
         String category = vh.getCategory();
         String seat = vh.getPassengers();
+        String branch = vh.getBranch();
 
         String driverID = vh.getDriver();
         dr = proxy.getDriver(driverID);
         String driverName = dr.getName();
 
-        String branch = request.getParameter("branch");
+        String pickup = request.getParameter("pickup");
+        String drop = request.getParameter("drop");
+        int distance = 0;
+
+        if (pickup != null && drop != null) {
+            for (Destination ds : proxy.getDestiations(branch)) {
+                if (ds.getDDrop().equals(drop) && ds.getDPickup().equals(pickup)) {
+                    distance = ds.getDistance();
+                }
+            }
+        }
+
+        session.setAttribute("Bbranch", branch);
 
     %>
     <body>
+        <%            response.setHeader("Cache-Control", "no-store, must-revalidate");
+            response.setHeader("pragma", "no-cache");
+            response.setHeader("Expires", "0");
+
+            if (session.getAttribute("mobile") == null) {
+                response.sendRedirect("customer-login.jsp");
+            }
+            String id = session.getAttribute("id").toString();
+            String name = session.getAttribute("name").toString();
+            String address = session.getAttribute("address").toString();
+            String mobile = session.getAttribute("mobile").toString();
+            String email = session.getAttribute("email").toString();
+        %>
         <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
@@ -125,6 +152,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                            <div class="col">
+                                                <div>
+                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Branch</p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div>
+                                                    <div style="margin-top: 10px;">
+                                                        <p name="driverName"><%out.print(branch);%></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -134,7 +175,7 @@
                         <div class="card mb-5">
                             <div class="card-body p-sm-5">
                                 <h2 class="text-center mb-4" style="color: rgb(133,135,150);">Booking Process</h2>
-                                <form action="" method="post">
+                                <form action="p-customer-booking.jsp" method="post">
                                     <div>
                                         <div class="row" style="height: 40px;margin-bottom: 10px;">
                                             <div class="col">
@@ -144,7 +185,7 @@
                                             </div>
                                             <div class="col">
                                                 <div>
-                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="text" id="customerName" name="name" placeholder="Name" required="" style="border-color: rgba(133,135,150,0);"></div>
+                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="text" id="customerName" name="name" value="<%out.print(name);%>" placeholder="Name" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +197,7 @@
                                             </div>
                                             <div class="col">
                                                 <div>
-                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="text" id="address" name="address" placeholder="Address" required="" style="border-color: rgba(133,135,150,0);"></div>
+                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="text" id="address" name="address" value="<%out.print(address);%>" placeholder="Address" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +209,7 @@
                                             </div>
                                             <div class="col">
                                                 <div>
-                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="placeholder form-control" type="tel" id="mobile" style="border-color: rgba(133,135,150,0);background: rgba(133,135,150,0);" placeholder="Mobile" required="" minlength="10" maxlength="10" name="mobile"></div>
+                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="placeholder form-control" type="tel" id="mobile" value="<%out.print(mobile);%>" style="border-color: rgba(133,135,150,0);background: rgba(133,135,150,0);" placeholder="Mobile" required="" minlength="10" maxlength="10" name="mobile"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,25 +223,7 @@
                                             </div>
                                             <div class="col">
                                                 <div>
-                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="email" id="email" style="border-color: rgba(133,135,150,0);" placeholder="Email" required="" name="email"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                            <div class="col">
-                                                <div>
-                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Branch</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="col">
-                                                <div>
-                                                    <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" id="adminBranch-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><select onchange="setDestionation('search');" class="form-select" style="border-color: rgba(33,37,41,0);" required="" id ="branchID" name="branch">
-                                                            <%          for (Destination ds : proxy.viewDstination()) {
-                                                                    out.print("<option value=\"" + ds.getDBranch()+ "\" name=\"branch\" selected=\"\">" + ds.getDBranch()+ "</option>");
-                                                                }
-                                                            %> 
-                                                        </select></div>
+                                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><input class="form-control" type="email" id="email" value="<%out.print(email);%>" style="border-color: rgba(133,135,150,0);" placeholder="Email" required="" name="email"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -214,8 +237,8 @@
                                                 <div>
                                                     <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" id="adminBranch-4" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><select class="form-select" style="border-color: rgba(33,37,41,0);" required="" id="pickupID" name="pickup">
                                                             <%
-                                                                for (Destination ds : proxy.viewDstination()) {
-                                                                    out.print("<option value=\"" + ds.getDBranch() + "\" name=\"branch\" selected=\"\">" + ds.getDPickup() + "</option>");
+                                                                for (Destination ds : proxy.getDestiations(branch)) {
+                                                                    out.print("<option name=\"pickup\" value=\"" + ds.getDPickup() + "\" selected=\"\">" + ds.getDPickup() + "</option>");
                                                                 }
                                                             %> 
                                                         </select></div>
@@ -231,15 +254,15 @@
                                             <div class="col">
                                                 <div>
                                                     <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" id="adminBranch-5" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><select class="form-select" style="border-color: rgba(33,37,41,0);" required="" id="dropID" name="drop">
-                                                            <%          for (Destination ds : proxy.viewDstination()) {
-                                                                    out.print("<option value=\"" + ds.getDBranch() + "\" name=\"branch\" selected=\"\">" + ds.getDDrop() + "</option>");
+                                                            <%          for (Destination ds : proxy.getDestiations(branch)) {
+                                                                    out.print("<option  name=\"drop\" value=\"" + ds.getDDrop() + "\"  selected=\"\">" + ds.getDDrop() + "</option>");
                                                                 }
                                                             %>
                                                         </select></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="margin-top: 0px;"><button class="btn btn-primary d-block w-100" type="submit" style="border-color: #e9b546;background: #e9b546;">Get the price</button></div>
+                                        <div style="margin-top: 0px;"><button class="btn btn-primary d-block w-100"  type="submit" style="border-color: #e9b546;background: #e9b546;">Get the price</button></div>
                                         <div class="row" style="height: 40px;margin-bottom: 35px;">
                                             <div class="col">
                                                 <div>
@@ -248,25 +271,13 @@
                                             </div>
                                             <div class="col">
                                                 <div>
-                                                    <p style="margin-top: 10px;" name="price">2400</p>
+                                                    <p style="margin-top: 10px;" name="price"><%out.print(distance);%></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div style="margin-top: 0px;"><button class="btn btn-primary d-block w-100" type="submit" style="border-color: #e9b546;background: #e9b546;">Process</button></div>
-                                    <div class="modal fade" role="dialog" tabindex="-1" id="modal-2">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Modal Title</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>The content of your modal.</p>
-                                                </div>
-                                                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </form>
                             </div>
                         </div>
@@ -279,21 +290,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script src="../assets/js/theme.js"></script>
 
-        <script type="text/javascript">
-            var branch = document.getElementById("branchId");
-            var pickup = document.getElementById("pickupID");
-            var drop = document.getElementById("dropID");
 
-            function setDestionation(search) {
-                for (var i = 0; i < pickup.length; i++) {
-                    if(search.value == pickup.options[i].value){
-                        pickup.options[i].style.display = "flex";
-                    }else{
-                        pickup.options[i].style.display = "none";
-                    }
-                }
-            }
-        </script>
     </body>
 
 </html>

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 
-<body style="background: rgb(248,249,251);">4
+<body style="background: rgb(248,249,251);">
     <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
     
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3 scrolled" id="mainNav" style="color: rgb(45, 45, 45);padding-bottom: 16px;background: #ffffff;">
@@ -74,7 +74,6 @@
             }else if(status=="failed"){
                 swal("OOps!","Username or Password is wrong","error");
             }
-        </script>
         </script>
 </body>
 

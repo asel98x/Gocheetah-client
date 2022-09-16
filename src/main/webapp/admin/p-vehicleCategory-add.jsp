@@ -16,8 +16,7 @@
 
     VehicleCat vc = new VehicleCat();
     String category = request.getParameter("vehiCat");
-    String presentage = request.getParameter("presentage");
-
+    Float presentage = Float.parseFloat(request.getParameter("presentage"));
     if (true) {
         try {
             System.out.println(category);

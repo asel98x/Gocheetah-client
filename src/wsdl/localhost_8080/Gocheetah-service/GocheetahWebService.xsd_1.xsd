@@ -104,6 +104,10 @@
 
 <xs:element name="getCustomerResponse" type="tns:getCustomerResponse"/>
 
+<xs:element name="getDestiations" type="tns:getDestiations"/>
+
+<xs:element name="getDestiationsResponse" type="tns:getDestiationsResponse"/>
+
 <xs:element name="getDistance" type="tns:getDistance"/>
 
 <xs:element name="getDistanceResponse" type="tns:getDistanceResponse"/>
@@ -250,7 +254,7 @@
 
 <xs:complexType name="vehicleCat">
 <xs:sequence>
-<xs:element name="presentage" type="xs:string" minOccurs="0"/>
+<xs:element name="presentage" type="xs:float"/>
 <xs:element name="vehicleCatId" type="xs:int"/>
 <xs:element name="vehicleCategory" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -297,6 +301,18 @@
 
 <xs:complexType name="customerLoginResponse">
 <xs:sequence>
+<xs:element name="return" type="tns:customer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverLogin">
+<xs:sequence>
+<xs:element name="dr" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverLoginResponse">
+<xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
@@ -328,6 +344,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="viewDstination">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="viewDstinationResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:destination" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="addAdmin">
 <xs:sequence>
 <xs:element name="ad" type="tns:admin" minOccurs="0"/>
@@ -351,28 +377,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="driverLogin">
-<xs:sequence>
-<xs:element name="dr" type="tns:driver" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="driverLoginResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="viewDstination">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="viewDstinationResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:destination" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="addBranch">
 <xs:sequence>
 <xs:element name="bn" type="tns:branchCategory" minOccurs="0"/>
@@ -382,6 +386,18 @@
 <xs:complexType name="addBranchResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDestiations">
+<xs:sequence>
+<xs:element name="branch" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDestiationsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:destination" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -547,18 +563,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicle">
-<xs:sequence>
-<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicleResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getCustomer">
 <xs:sequence>
 <xs:element name="search" type="xs:string" minOccurs="0"/>
@@ -571,6 +575,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="deleteVehicle">
+<xs:sequence>
+<xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="adminLogin">
 <xs:sequence>
 <xs:element name="ad" type="tns:admin" minOccurs="0"/>
@@ -580,6 +596,18 @@
 <xs:complexType name="adminLoginResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriver">
+<xs:sequence>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:driver" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -602,18 +630,6 @@
 <xs:complexType name="updateDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getDriver">
-<xs:sequence>
-<xs:element name="search" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getDriverResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:driver" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

@@ -16,7 +16,7 @@
     VehicleCat vc = new VehicleCat();
     int vehiCatID = Integer.parseInt(request.getParameter("vehicleCategoryIDT"));
     String category = request.getParameter("vehicleCategoryT");
-    String presentage = request.getParameter("vehiclePresentage");
+    float presentage = Float.parseFloat(request.getParameter("vehiclePresentage"));
 
     vc.setVehicleCatId(vehiCatID);
     vc.setVehicleCategory(category);

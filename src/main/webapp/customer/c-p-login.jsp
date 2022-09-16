@@ -37,10 +37,16 @@
     
             if(true){
                 try {
-                        if(proxy.customerLogin(cs)){
+                        cs = proxy.customerLogin(cs);
+                        if(cs != null){
                             System.out.println("work");
                             session.setAttribute("mobile", mobile);
-                            response.sendRedirect("customer-panel.jsp");
+                            session.setAttribute("id", cs.getCustomerId());
+                            session.setAttribute("name", cs.getName());
+                            session.setAttribute("address", cs.getAddress());
+                            session.setAttribute("mobile", cs.getMobile());
+                            session.setAttribute("email", cs.getEmail());
+                            response.sendRedirect("customer-panel_1.jsp");
                             
                         }else{
                             System.out.println("error");

@@ -4,29 +4,11 @@
 <xsd:import namespace="http://service.gocheetah.mycompany.com/" schemaLocation="http://localhost:8080/Gocheetah-service/GocheetahWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="vehicleCategoryList">
-<part name="parameters" element="tns:vehicleCategoryList"/>
+<message name="getVehicleCategoryh">
+<part name="parameters" element="tns:getVehicleCategoryh"/>
 </message>
-<message name="vehicleCategoryListResponse">
-<part name="parameters" element="tns:vehicleCategoryListResponse"/>
-</message>
-<message name="viewVehicleCateories">
-<part name="parameters" element="tns:viewVehicleCateories"/>
-</message>
-<message name="viewVehicleCateoriesResponse">
-<part name="parameters" element="tns:viewVehicleCateoriesResponse"/>
-</message>
-<message name="findDriverVehicleList">
-<part name="parameters" element="tns:findDriverVehicleList"/>
-</message>
-<message name="findDriverVehicleListResponse">
-<part name="parameters" element="tns:findDriverVehicleListResponse"/>
-</message>
-<message name="addVehicleCategory">
-<part name="parameters" element="tns:addVehicleCategory"/>
-</message>
-<message name="addVehicleCategoryResponse">
-<part name="parameters" element="tns:addVehicleCategoryResponse"/>
+<message name="getVehicleCategoryhResponse">
+<part name="parameters" element="tns:getVehicleCategoryhResponse"/>
 </message>
 <message name="updatedVehicleCategory">
 <part name="parameters" element="tns:updatedVehicleCategory"/>
@@ -34,17 +16,35 @@
 <message name="updatedVehicleCategoryResponse">
 <part name="parameters" element="tns:updatedVehicleCategoryResponse"/>
 </message>
+<message name="addVehicleCategory">
+<part name="parameters" element="tns:addVehicleCategory"/>
+</message>
+<message name="addVehicleCategoryResponse">
+<part name="parameters" element="tns:addVehicleCategoryResponse"/>
+</message>
+<message name="vehicleCategoryList">
+<part name="parameters" element="tns:vehicleCategoryList"/>
+</message>
+<message name="vehicleCategoryListResponse">
+<part name="parameters" element="tns:vehicleCategoryListResponse"/>
+</message>
 <message name="deleteVehicleCategory">
 <part name="parameters" element="tns:deleteVehicleCategory"/>
 </message>
 <message name="deleteVehicleCategoryResponse">
 <part name="parameters" element="tns:deleteVehicleCategoryResponse"/>
 </message>
-<message name="getVehicleCategoryh">
-<part name="parameters" element="tns:getVehicleCategoryh"/>
+<message name="findDriverVehicleList">
+<part name="parameters" element="tns:findDriverVehicleList"/>
 </message>
-<message name="getVehicleCategoryhResponse">
-<part name="parameters" element="tns:getVehicleCategoryhResponse"/>
+<message name="findDriverVehicleListResponse">
+<part name="parameters" element="tns:findDriverVehicleListResponse"/>
+</message>
+<message name="viewVehicleCateories">
+<part name="parameters" element="tns:viewVehicleCateories"/>
+</message>
+<message name="viewVehicleCateoriesResponse">
+<part name="parameters" element="tns:viewVehicleCateoriesResponse"/>
 </message>
 <message name="getLocations">
 <part name="parameters" element="tns:getLocations"/>
@@ -52,35 +52,29 @@
 <message name="getLocationsResponse">
 <part name="parameters" element="tns:getLocationsResponse"/>
 </message>
-<message name="getVehicle">
-<part name="parameters" element="tns:getVehicle"/>
+<message name="getAdmin">
+<part name="parameters" element="tns:getAdmin"/>
 </message>
-<message name="getVehicleResponse">
-<part name="parameters" element="tns:getVehicleResponse"/>
+<message name="getAdminResponse">
+<part name="parameters" element="tns:getAdminResponse"/>
 </message>
-<message name="updateVehicle">
-<part name="parameters" element="tns:updateVehicle"/>
+<message name="getDriver">
+<part name="parameters" element="tns:getDriver"/>
 </message>
-<message name="updateVehicleResponse">
-<part name="parameters" element="tns:updateVehicleResponse"/>
+<message name="getDriverResponse">
+<part name="parameters" element="tns:getDriverResponse"/>
 </message>
-<message name="deleteVehicle">
-<part name="parameters" element="tns:deleteVehicle"/>
+<message name="customerLogin">
+<part name="parameters" element="tns:customerLogin"/>
 </message>
-<message name="deleteVehicleResponse">
-<part name="parameters" element="tns:deleteVehicleResponse"/>
+<message name="customerLoginResponse">
+<part name="parameters" element="tns:customerLoginResponse"/>
 </message>
-<message name="addDstination">
-<part name="parameters" element="tns:addDstination"/>
+<message name="driverLogin">
+<part name="parameters" element="tns:driverLogin"/>
 </message>
-<message name="addDstinationResponse">
-<part name="parameters" element="tns:addDstinationResponse"/>
-</message>
-<message name="vehicleList">
-<part name="parameters" element="tns:vehicleList"/>
-</message>
-<message name="vehicleListResponse">
-<part name="parameters" element="tns:vehicleListResponse"/>
+<message name="driverLoginResponse">
+<part name="parameters" element="tns:driverLoginResponse"/>
 </message>
 <message name="deleteBranch">
 <part name="parameters" element="tns:deleteBranch"/>
@@ -88,29 +82,29 @@
 <message name="deleteBranchResponse">
 <part name="parameters" element="tns:deleteBranchResponse"/>
 </message>
-<message name="addVehicle">
-<part name="parameters" element="tns:addVehicle"/>
-</message>
-<message name="addVehicleResponse">
-<part name="parameters" element="tns:addVehicleResponse"/>
-</message>
 <message name="viewVehicles">
 <part name="parameters" element="tns:viewVehicles"/>
 </message>
 <message name="viewVehiclesResponse">
 <part name="parameters" element="tns:viewVehiclesResponse"/>
 </message>
-<message name="getDstination">
-<part name="parameters" element="tns:getDstination"/>
+<message name="vehicleList">
+<part name="parameters" element="tns:vehicleList"/>
 </message>
-<message name="getDstinationResponse">
-<part name="parameters" element="tns:getDstinationResponse"/>
+<message name="vehicleListResponse">
+<part name="parameters" element="tns:vehicleListResponse"/>
 </message>
-<message name="DstinationList">
-<part name="parameters" element="tns:DstinationList"/>
+<message name="addDstination">
+<part name="parameters" element="tns:addDstination"/>
 </message>
-<message name="DstinationListResponse">
-<part name="parameters" element="tns:DstinationListResponse"/>
+<message name="addDstinationResponse">
+<part name="parameters" element="tns:addDstinationResponse"/>
+</message>
+<message name="branchesList">
+<part name="parameters" element="tns:branchesList"/>
+</message>
+<message name="branchesListResponse">
+<part name="parameters" element="tns:branchesListResponse"/>
 </message>
 <message name="updateDstination">
 <part name="parameters" element="tns:updateDstination"/>
@@ -124,23 +118,11 @@
 <message name="deleteDstinationResponse">
 <part name="parameters" element="tns:deleteDstinationResponse"/>
 </message>
-<message name="getAdmin">
-<part name="parameters" element="tns:getAdmin"/>
+<message name="getDestiations">
+<part name="parameters" element="tns:getDestiations"/>
 </message>
-<message name="getAdminResponse">
-<part name="parameters" element="tns:getAdminResponse"/>
-</message>
-<message name="deleteAdmin">
-<part name="parameters" element="tns:deleteAdmin"/>
-</message>
-<message name="deleteAdminResponse">
-<part name="parameters" element="tns:deleteAdminResponse"/>
-</message>
-<message name="getCustomer">
-<part name="parameters" element="tns:getCustomer"/>
-</message>
-<message name="getCustomerResponse">
-<part name="parameters" element="tns:getCustomerResponse"/>
+<message name="getDestiationsResponse">
+<part name="parameters" element="tns:getDestiationsResponse"/>
 </message>
 <message name="DriverList">
 <part name="parameters" element="tns:DriverList"/>
@@ -148,41 +130,11 @@
 <message name="DriverListResponse">
 <part name="parameters" element="tns:DriverListResponse"/>
 </message>
-<message name="addAdmin">
-<part name="parameters" element="tns:addAdmin"/>
+<message name="getCustomer">
+<part name="parameters" element="tns:getCustomer"/>
 </message>
-<message name="addAdminResponse">
-<part name="parameters" element="tns:addAdminResponse"/>
-</message>
-<message name="updateAdmin">
-<part name="parameters" element="tns:updateAdmin"/>
-</message>
-<message name="updateAdminResponse">
-<part name="parameters" element="tns:updateAdminResponse"/>
-</message>
-<message name="addDriver">
-<part name="parameters" element="tns:addDriver"/>
-</message>
-<message name="addDriverResponse">
-<part name="parameters" element="tns:addDriverResponse"/>
-</message>
-<message name="customerList">
-<part name="parameters" element="tns:customerList"/>
-</message>
-<message name="customerListResponse">
-<part name="parameters" element="tns:customerListResponse"/>
-</message>
-<message name="deleteCustomer">
-<part name="parameters" element="tns:deleteCustomer"/>
-</message>
-<message name="deleteCustomerResponse">
-<part name="parameters" element="tns:deleteCustomerResponse"/>
-</message>
-<message name="updateDriver">
-<part name="parameters" element="tns:updateDriver"/>
-</message>
-<message name="updateDriverResponse">
-<part name="parameters" element="tns:updateDriverResponse"/>
+<message name="getCustomerResponse">
+<part name="parameters" element="tns:getCustomerResponse"/>
 </message>
 <message name="addBranch">
 <part name="parameters" element="tns:addBranch"/>
@@ -190,35 +142,35 @@
 <message name="addBranchResponse">
 <part name="parameters" element="tns:addBranchResponse"/>
 </message>
+<message name="addDriver">
+<part name="parameters" element="tns:addDriver"/>
+</message>
+<message name="addDriverResponse">
+<part name="parameters" element="tns:addDriverResponse"/>
+</message>
+<message name="deleteVehicle">
+<part name="parameters" element="tns:deleteVehicle"/>
+</message>
+<message name="deleteVehicleResponse">
+<part name="parameters" element="tns:deleteVehicleResponse"/>
+</message>
+<message name="getVehicle">
+<part name="parameters" element="tns:getVehicle"/>
+</message>
+<message name="getVehicleResponse">
+<part name="parameters" element="tns:getVehicleResponse"/>
+</message>
+<message name="updateVehicle">
+<part name="parameters" element="tns:updateVehicle"/>
+</message>
+<message name="updateVehicleResponse">
+<part name="parameters" element="tns:updateVehicleResponse"/>
+</message>
 <message name="customerSignup">
 <part name="parameters" element="tns:customerSignup"/>
 </message>
 <message name="customerSignupResponse">
 <part name="parameters" element="tns:customerSignupResponse"/>
-</message>
-<message name="AdminList">
-<part name="parameters" element="tns:AdminList"/>
-</message>
-<message name="AdminListResponse">
-<part name="parameters" element="tns:AdminListResponse"/>
-</message>
-<message name="driverLogin">
-<part name="parameters" element="tns:driverLogin"/>
-</message>
-<message name="driverLoginResponse">
-<part name="parameters" element="tns:driverLoginResponse"/>
-</message>
-<message name="adminLogin">
-<part name="parameters" element="tns:adminLogin"/>
-</message>
-<message name="adminLoginResponse">
-<part name="parameters" element="tns:adminLoginResponse"/>
-</message>
-<message name="deleteDriver">
-<part name="parameters" element="tns:deleteDriver"/>
-</message>
-<message name="deleteDriverResponse">
-<part name="parameters" element="tns:deleteDriverResponse"/>
 </message>
 <message name="viewBranches">
 <part name="parameters" element="tns:viewBranches"/>
@@ -226,53 +178,17 @@
 <message name="viewBranchesResponse">
 <part name="parameters" element="tns:viewBranchesResponse"/>
 </message>
-<message name="getBranch">
-<part name="parameters" element="tns:getBranch"/>
+<message name="getDstination">
+<part name="parameters" element="tns:getDstination"/>
 </message>
-<message name="getBranchResponse">
-<part name="parameters" element="tns:getBranchResponse"/>
+<message name="getDstinationResponse">
+<part name="parameters" element="tns:getDstinationResponse"/>
 </message>
-<message name="updatedBranch">
-<part name="parameters" element="tns:updatedBranch"/>
+<message name="addVehicle">
+<part name="parameters" element="tns:addVehicle"/>
 </message>
-<message name="updatedBranchResponse">
-<part name="parameters" element="tns:updatedBranchResponse"/>
-</message>
-<message name="customerLogin">
-<part name="parameters" element="tns:customerLogin"/>
-</message>
-<message name="customerLoginResponse">
-<part name="parameters" element="tns:customerLoginResponse"/>
-</message>
-<message name="updatedCustomer">
-<part name="parameters" element="tns:updatedCustomer"/>
-</message>
-<message name="updatedCustomerResponse">
-<part name="parameters" element="tns:updatedCustomerResponse"/>
-</message>
-<message name="branchesList">
-<part name="parameters" element="tns:branchesList"/>
-</message>
-<message name="branchesListResponse">
-<part name="parameters" element="tns:branchesListResponse"/>
-</message>
-<message name="viewDstination">
-<part name="parameters" element="tns:viewDstination"/>
-</message>
-<message name="viewDstinationResponse">
-<part name="parameters" element="tns:viewDstinationResponse"/>
-</message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
-</message>
-<message name="getDriver">
-<part name="parameters" element="tns:getDriver"/>
-</message>
-<message name="getDriverResponse">
-<part name="parameters" element="tns:getDriverResponse"/>
+<message name="addVehicleResponse">
+<part name="parameters" element="tns:addVehicleResponse"/>
 </message>
 <message name="getDistance">
 <part name="parameters" element="tns:getDistance"/>
@@ -280,78 +196,164 @@
 <message name="getDistanceResponse">
 <part name="parameters" element="tns:getDistanceResponse"/>
 </message>
+<message name="updatedBranch">
+<part name="parameters" element="tns:updatedBranch"/>
+</message>
+<message name="updatedBranchResponse">
+<part name="parameters" element="tns:updatedBranchResponse"/>
+</message>
+<message name="deleteAdmin">
+<part name="parameters" element="tns:deleteAdmin"/>
+</message>
+<message name="deleteAdminResponse">
+<part name="parameters" element="tns:deleteAdminResponse"/>
+</message>
+<message name="viewDstination">
+<part name="parameters" element="tns:viewDstination"/>
+</message>
+<message name="viewDstinationResponse">
+<part name="parameters" element="tns:viewDstinationResponse"/>
+</message>
+<message name="DstinationList">
+<part name="parameters" element="tns:DstinationList"/>
+</message>
+<message name="DstinationListResponse">
+<part name="parameters" element="tns:DstinationListResponse"/>
+</message>
+<message name="addAdmin">
+<part name="parameters" element="tns:addAdmin"/>
+</message>
+<message name="addAdminResponse">
+<part name="parameters" element="tns:addAdminResponse"/>
+</message>
+<message name="updatedCustomer">
+<part name="parameters" element="tns:updatedCustomer"/>
+</message>
+<message name="updatedCustomerResponse">
+<part name="parameters" element="tns:updatedCustomerResponse"/>
+</message>
+<message name="AdminList">
+<part name="parameters" element="tns:AdminList"/>
+</message>
+<message name="AdminListResponse">
+<part name="parameters" element="tns:AdminListResponse"/>
+</message>
+<message name="deleteDriver">
+<part name="parameters" element="tns:deleteDriver"/>
+</message>
+<message name="deleteDriverResponse">
+<part name="parameters" element="tns:deleteDriverResponse"/>
+</message>
+<message name="deleteCustomer">
+<part name="parameters" element="tns:deleteCustomer"/>
+</message>
+<message name="deleteCustomerResponse">
+<part name="parameters" element="tns:deleteCustomerResponse"/>
+</message>
+<message name="getBranch">
+<part name="parameters" element="tns:getBranch"/>
+</message>
+<message name="getBranchResponse">
+<part name="parameters" element="tns:getBranchResponse"/>
+</message>
+<message name="adminLogin">
+<part name="parameters" element="tns:adminLogin"/>
+</message>
+<message name="adminLoginResponse">
+<part name="parameters" element="tns:adminLoginResponse"/>
+</message>
+<message name="customerList">
+<part name="parameters" element="tns:customerList"/>
+</message>
+<message name="customerListResponse">
+<part name="parameters" element="tns:customerListResponse"/>
+</message>
+<message name="updateAdmin">
+<part name="parameters" element="tns:updateAdmin"/>
+</message>
+<message name="updateAdminResponse">
+<part name="parameters" element="tns:updateAdminResponse"/>
+</message>
+<message name="updateDriver">
+<part name="parameters" element="tns:updateDriver"/>
+</message>
+<message name="updateDriverResponse">
+<part name="parameters" element="tns:updateDriverResponse"/>
+</message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
 <portType name="GocheetahWebService">
-<operation name="vehicleCategoryList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleCategoryListRequest" message="tns:vehicleCategoryList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleCategoryListResponse" message="tns:vehicleCategoryListResponse"/>
-</operation>
-<operation name="viewVehicleCateories">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehicleCateoriesRequest" message="tns:viewVehicleCateories"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehicleCateoriesResponse" message="tns:viewVehicleCateoriesResponse"/>
-</operation>
-<operation name="findDriverVehicleList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/findDriverVehicleListRequest" message="tns:findDriverVehicleList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/findDriverVehicleListResponse" message="tns:findDriverVehicleListResponse"/>
-</operation>
-<operation name="addVehicleCategory">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleCategoryRequest" message="tns:addVehicleCategory"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleCategoryResponse" message="tns:addVehicleCategoryResponse"/>
+<operation name="getVehicleCategoryh">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleCategoryhRequest" message="tns:getVehicleCategoryh"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleCategoryhResponse" message="tns:getVehicleCategoryhResponse"/>
 </operation>
 <operation name="updatedVehicleCategory">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedVehicleCategoryRequest" message="tns:updatedVehicleCategory"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedVehicleCategoryResponse" message="tns:updatedVehicleCategoryResponse"/>
 </operation>
+<operation name="addVehicleCategory">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleCategoryRequest" message="tns:addVehicleCategory"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleCategoryResponse" message="tns:addVehicleCategoryResponse"/>
+</operation>
+<operation name="vehicleCategoryList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleCategoryListRequest" message="tns:vehicleCategoryList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleCategoryListResponse" message="tns:vehicleCategoryListResponse"/>
+</operation>
 <operation name="deleteVehicleCategory">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleCategoryRequest" message="tns:deleteVehicleCategory"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleCategoryResponse" message="tns:deleteVehicleCategoryResponse"/>
 </operation>
-<operation name="getVehicleCategoryh">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleCategoryhRequest" message="tns:getVehicleCategoryh"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleCategoryhResponse" message="tns:getVehicleCategoryhResponse"/>
+<operation name="findDriverVehicleList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/findDriverVehicleListRequest" message="tns:findDriverVehicleList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/findDriverVehicleListResponse" message="tns:findDriverVehicleListResponse"/>
+</operation>
+<operation name="viewVehicleCateories">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehicleCateoriesRequest" message="tns:viewVehicleCateories"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehicleCateoriesResponse" message="tns:viewVehicleCateoriesResponse"/>
 </operation>
 <operation name="getLocations">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getLocationsRequest" message="tns:getLocations"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getLocationsResponse" message="tns:getLocationsResponse"/>
 </operation>
-<operation name="getVehicle">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleRequest" message="tns:getVehicle"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleResponse" message="tns:getVehicleResponse"/>
+<operation name="getAdmin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getAdminRequest" message="tns:getAdmin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getAdminResponse" message="tns:getAdminResponse"/>
 </operation>
-<operation name="updateVehicle">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateVehicleRequest" message="tns:updateVehicle"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateVehicleResponse" message="tns:updateVehicleResponse"/>
+<operation name="getDriver">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDriverRequest" message="tns:getDriver"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDriverResponse" message="tns:getDriverResponse"/>
 </operation>
-<operation name="deleteVehicle">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleRequest" message="tns:deleteVehicle"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleResponse" message="tns:deleteVehicleResponse"/>
+<operation name="customerLogin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerLoginRequest" message="tns:customerLogin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerLoginResponse" message="tns:customerLoginResponse"/>
 </operation>
-<operation name="addDstination">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDstinationRequest" message="tns:addDstination"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDstinationResponse" message="tns:addDstinationResponse"/>
-</operation>
-<operation name="vehicleList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleListRequest" message="tns:vehicleList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleListResponse" message="tns:vehicleListResponse"/>
+<operation name="driverLogin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/driverLoginRequest" message="tns:driverLogin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/driverLoginResponse" message="tns:driverLoginResponse"/>
 </operation>
 <operation name="deleteBranch">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteBranchRequest" message="tns:deleteBranch"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteBranchResponse" message="tns:deleteBranchResponse"/>
 </operation>
-<operation name="addVehicle">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleRequest" message="tns:addVehicle"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleResponse" message="tns:addVehicleResponse"/>
-</operation>
 <operation name="viewVehicles">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehiclesRequest" message="tns:viewVehicles"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewVehiclesResponse" message="tns:viewVehiclesResponse"/>
 </operation>
-<operation name="getDstination">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDstinationRequest" message="tns:getDstination"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDstinationResponse" message="tns:getDstinationResponse"/>
+<operation name="vehicleList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleListRequest" message="tns:vehicleList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/vehicleListResponse" message="tns:vehicleListResponse"/>
 </operation>
-<operation name="DstinationList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DstinationListRequest" message="tns:DstinationList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DstinationListResponse" message="tns:DstinationListResponse"/>
+<operation name="addDstination">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDstinationRequest" message="tns:addDstination"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDstinationResponse" message="tns:addDstinationResponse"/>
+</operation>
+<operation name="branchesList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/branchesListRequest" message="tns:branchesList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/branchesListResponse" message="tns:branchesListResponse"/>
 </operation>
 <operation name="updateDstination">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateDstinationRequest" message="tns:updateDstination"/>
@@ -361,141 +363,122 @@
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDstinationRequest" message="tns:deleteDstination"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDstinationResponse" message="tns:deleteDstinationResponse"/>
 </operation>
-<operation name="getAdmin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getAdminRequest" message="tns:getAdmin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getAdminResponse" message="tns:getAdminResponse"/>
-</operation>
-<operation name="deleteAdmin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteAdminRequest" message="tns:deleteAdmin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteAdminResponse" message="tns:deleteAdminResponse"/>
-</operation>
-<operation name="getCustomer">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getCustomerRequest" message="tns:getCustomer"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getCustomerResponse" message="tns:getCustomerResponse"/>
+<operation name="getDestiations">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDestiationsRequest" message="tns:getDestiations"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDestiationsResponse" message="tns:getDestiationsResponse"/>
 </operation>
 <operation name="DriverList">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DriverListRequest" message="tns:DriverList"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DriverListResponse" message="tns:DriverListResponse"/>
 </operation>
-<operation name="addAdmin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addAdminRequest" message="tns:addAdmin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addAdminResponse" message="tns:addAdminResponse"/>
-</operation>
-<operation name="updateAdmin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateAdminRequest" message="tns:updateAdmin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateAdminResponse" message="tns:updateAdminResponse"/>
-</operation>
-<operation name="addDriver">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDriverRequest" message="tns:addDriver"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDriverResponse" message="tns:addDriverResponse"/>
-</operation>
-<operation name="customerList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerListRequest" message="tns:customerList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerListResponse" message="tns:customerListResponse"/>
-</operation>
-<operation name="deleteCustomer">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteCustomerRequest" message="tns:deleteCustomer"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteCustomerResponse" message="tns:deleteCustomerResponse"/>
-</operation>
-<operation name="updateDriver">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateDriverRequest" message="tns:updateDriver"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateDriverResponse" message="tns:updateDriverResponse"/>
+<operation name="getCustomer">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getCustomerRequest" message="tns:getCustomer"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getCustomerResponse" message="tns:getCustomerResponse"/>
 </operation>
 <operation name="addBranch">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addBranchRequest" message="tns:addBranch"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addBranchResponse" message="tns:addBranchResponse"/>
 </operation>
+<operation name="addDriver">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDriverRequest" message="tns:addDriver"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addDriverResponse" message="tns:addDriverResponse"/>
+</operation>
+<operation name="deleteVehicle">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleRequest" message="tns:deleteVehicle"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteVehicleResponse" message="tns:deleteVehicleResponse"/>
+</operation>
+<operation name="getVehicle">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleRequest" message="tns:getVehicle"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getVehicleResponse" message="tns:getVehicleResponse"/>
+</operation>
+<operation name="updateVehicle">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateVehicleRequest" message="tns:updateVehicle"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateVehicleResponse" message="tns:updateVehicleResponse"/>
+</operation>
 <operation name="customerSignup">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerSignupRequest" message="tns:customerSignup"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerSignupResponse" message="tns:customerSignupResponse"/>
-</operation>
-<operation name="AdminList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/AdminListRequest" message="tns:AdminList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/AdminListResponse" message="tns:AdminListResponse"/>
-</operation>
-<operation name="driverLogin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/driverLoginRequest" message="tns:driverLogin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/driverLoginResponse" message="tns:driverLoginResponse"/>
-</operation>
-<operation name="adminLogin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/adminLoginRequest" message="tns:adminLogin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/adminLoginResponse" message="tns:adminLoginResponse"/>
-</operation>
-<operation name="deleteDriver">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDriverRequest" message="tns:deleteDriver"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDriverResponse" message="tns:deleteDriverResponse"/>
 </operation>
 <operation name="viewBranches">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewBranchesRequest" message="tns:viewBranches"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewBranchesResponse" message="tns:viewBranchesResponse"/>
 </operation>
-<operation name="getBranch">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getBranchRequest" message="tns:getBranch"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getBranchResponse" message="tns:getBranchResponse"/>
+<operation name="getDstination">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDstinationRequest" message="tns:getDstination"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDstinationResponse" message="tns:getDstinationResponse"/>
 </operation>
-<operation name="updatedBranch">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedBranchRequest" message="tns:updatedBranch"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedBranchResponse" message="tns:updatedBranchResponse"/>
-</operation>
-<operation name="customerLogin">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerLoginRequest" message="tns:customerLogin"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerLoginResponse" message="tns:customerLoginResponse"/>
-</operation>
-<operation name="updatedCustomer">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedCustomerRequest" message="tns:updatedCustomer"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedCustomerResponse" message="tns:updatedCustomerResponse"/>
-</operation>
-<operation name="branchesList">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/branchesListRequest" message="tns:branchesList"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/branchesListResponse" message="tns:branchesListResponse"/>
-</operation>
-<operation name="viewDstination">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewDstinationRequest" message="tns:viewDstination"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewDstinationResponse" message="tns:viewDstinationResponse"/>
-</operation>
-<operation name="hello">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/helloResponse" message="tns:helloResponse"/>
-</operation>
-<operation name="getDriver">
-<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDriverRequest" message="tns:getDriver"/>
-<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDriverResponse" message="tns:getDriverResponse"/>
+<operation name="addVehicle">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleRequest" message="tns:addVehicle"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addVehicleResponse" message="tns:addVehicleResponse"/>
 </operation>
 <operation name="getDistance">
 <input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDistanceRequest" message="tns:getDistance"/>
 <output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getDistanceResponse" message="tns:getDistanceResponse"/>
 </operation>
+<operation name="updatedBranch">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedBranchRequest" message="tns:updatedBranch"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedBranchResponse" message="tns:updatedBranchResponse"/>
+</operation>
+<operation name="deleteAdmin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteAdminRequest" message="tns:deleteAdmin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteAdminResponse" message="tns:deleteAdminResponse"/>
+</operation>
+<operation name="viewDstination">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewDstinationRequest" message="tns:viewDstination"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/viewDstinationResponse" message="tns:viewDstinationResponse"/>
+</operation>
+<operation name="DstinationList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DstinationListRequest" message="tns:DstinationList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/DstinationListResponse" message="tns:DstinationListResponse"/>
+</operation>
+<operation name="addAdmin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addAdminRequest" message="tns:addAdmin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/addAdminResponse" message="tns:addAdminResponse"/>
+</operation>
+<operation name="updatedCustomer">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedCustomerRequest" message="tns:updatedCustomer"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updatedCustomerResponse" message="tns:updatedCustomerResponse"/>
+</operation>
+<operation name="AdminList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/AdminListRequest" message="tns:AdminList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/AdminListResponse" message="tns:AdminListResponse"/>
+</operation>
+<operation name="deleteDriver">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDriverRequest" message="tns:deleteDriver"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteDriverResponse" message="tns:deleteDriverResponse"/>
+</operation>
+<operation name="deleteCustomer">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteCustomerRequest" message="tns:deleteCustomer"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/deleteCustomerResponse" message="tns:deleteCustomerResponse"/>
+</operation>
+<operation name="getBranch">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getBranchRequest" message="tns:getBranch"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/getBranchResponse" message="tns:getBranchResponse"/>
+</operation>
+<operation name="adminLogin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/adminLoginRequest" message="tns:adminLogin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/adminLoginResponse" message="tns:adminLoginResponse"/>
+</operation>
+<operation name="customerList">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerListRequest" message="tns:customerList"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/customerListResponse" message="tns:customerListResponse"/>
+</operation>
+<operation name="updateAdmin">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateAdminRequest" message="tns:updateAdmin"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateAdminResponse" message="tns:updateAdminResponse"/>
+</operation>
+<operation name="updateDriver">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateDriverRequest" message="tns:updateDriver"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/updateDriverResponse" message="tns:updateDriverResponse"/>
+</operation>
+<operation name="hello">
+<input wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://service.gocheetah.mycompany.com/GocheetahWebService/helloResponse" message="tns:helloResponse"/>
+</operation>
 </portType>
 <binding name="GocheetahWebServicePortBinding" type="tns:GocheetahWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="vehicleCategoryList">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="viewVehicleCateories">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findDriverVehicleList">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="addVehicleCategory">
+<operation name="getVehicleCategoryh">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -513,6 +496,24 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="addVehicleCategory">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="vehicleCategoryList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="deleteVehicleCategory">
 <soap:operation soapAction=""/>
 <input>
@@ -522,7 +523,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getVehicleCategoryh">
+<operation name="findDriverVehicleList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="viewVehicleCateories">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -540,7 +550,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getVehicle">
+<operation name="getAdmin">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -549,7 +559,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="updateVehicle">
+<operation name="getDriver">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -558,7 +568,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="deleteVehicle">
+<operation name="customerLogin">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -567,16 +577,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="addDstination">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="vehicleList">
+<operation name="driverLogin">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -594,15 +595,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="addVehicle">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="viewVehicles">
 <soap:operation soapAction=""/>
 <input>
@@ -612,7 +604,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getDstination">
+<operation name="vehicleList">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -621,7 +613,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="DstinationList">
+<operation name="addDstination">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="branchesList">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -648,25 +649,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getAdmin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="deleteAdmin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getCustomer">
+<operation name="getDestiations">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -684,52 +667,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="addAdmin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="updateAdmin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="addDriver">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="customerList">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="deleteCustomer">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="updateDriver">
+<operation name="getCustomer">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -747,43 +685,43 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="addDriver">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteVehicle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getVehicle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateVehicle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="customerSignup">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="AdminList">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="driverLogin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="adminLogin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="deleteDriver">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -801,7 +739,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getBranch">
+<operation name="getDstination">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addVehicle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getDistance">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -819,25 +775,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="customerLogin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="updatedCustomer">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="branchesList">
+<operation name="deleteAdmin">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -855,25 +793,106 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="DstinationList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updatedCustomer">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="AdminList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteDriver">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteCustomer">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getBranch">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="adminLogin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="customerList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateDriver">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="hello">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getDriver">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getDistance">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

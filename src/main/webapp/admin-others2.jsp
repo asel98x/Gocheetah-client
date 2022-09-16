@@ -686,6 +686,21 @@
                 swal("congratulations", "successfully registered", "success");
             } else if (status == "failed") {
                 swal("OOps", "Unsuccessfully registered", "error");
+            }else if (status == "update") {
+                swal("congratulations", "Successfully updated", "success");
+            }else if (status == "confirm") {
+                swal({
+                    title: "Are you sure";
+                    text: "are you sure that you want to update?";
+                    icon: "warning";
+                    buttons:true,
+                    dangerMode:true;   
+                }).then((isOkey)=>{
+                    if(isOkay){
+                        status.submit();
+                    }
+                });
+                return false;
             }
         </script>
 

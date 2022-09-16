@@ -4,6 +4,7 @@
     Author     : asel
 --%>
 
+<%@page import="service.BranchCategory"%>
 <%@page import="service.Vehicle"%>
 <%@page import="service.GocheetahWebService"%>
 <%@page import="service.GocheetahWebService_Service"%>
@@ -30,20 +31,21 @@
 
     <body id="page-top">
         <%
-                        response.setHeader("Cache-Control", "no-store, must-revalidate");
-                        response.setHeader("pragma", "no-cache");
-                        response.setHeader("Expires", "0");
-                        
-                        if(session.getAttribute("mobile")==null){
-                            response.sendRedirect("customer-login.jsp");
-                        }
-                        String name = session.getAttribute("name").toString();
-                        
+            response.setHeader("Cache-Control", "no-store, must-revalidate");
+            response.setHeader("pragma", "no-cache");
+            response.setHeader("Expires", "0");
+
+            if (session.getAttribute("mobile") == null) {
+                response.sendRedirect("customer-login.jsp");
+            }
+            String name = session.getAttribute("name").toString();
+
         %>
         <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
         <%
             GocheetahWebService_Service service = new GocheetahWebService_Service();
             GocheetahWebService proxy = service.getGocheetahWebServicePort();
+            String branch = request.getParameter("branchT");
         %>
 
         <div id="wrapper">
@@ -52,7 +54,7 @@
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                         <div class="container-fluid">
                             <ul class="navbar-nav flex-nowrap ms-auto">
-                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"></span><%out.print(name);%></li>
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"></span><%//out.print(name);%></li>
                                 <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
                             </ul>
                         </div>
@@ -81,7 +83,7 @@
                                                     out.print("<div style=\"max-width: 350px;padding-left: 50px;\">");
                                                     out.print("<h2 class=\"text-uppercase fw-bold\" style=\"margin-top: 0px;\">" + vh.getVehicleName() + "</h2>");
                                                     out.print("<p style=\"margin-top: -6px;\">" + vh.getType() + "</p>");
-                                                    out.print("<p id =\"vehicleID\" style=\"color:rgba(133,135,150,0);\">" + vh.getVehicleId()+ "</p>");
+                                                    out.print("<p id =\"vehicleID\" style=\"color:rgba(133,135,150,0);\">" + vh.getVehicleId() + "</p>");
                                                     out.print("<div>");
                                                     out.print("<div class=\"row\" style=\"height: 40px;\">");
                                                     out.print("<div class=\"col\">");
@@ -120,7 +122,20 @@
                                                     out.print("</div>");
                                                     out.print("</div>");
                                                     out.print("</div>");
-                                                    out.print("<div style=\"margin-top: 20px;\"><a class=\"btn btn-primary d-block w-100\" role=\"button\" id=\"BookNowBtn\" href=\"customer-booking.jsp?vehicleDataPass=" + vh.getVehicleId() + "\" style=\"background: #e9b546;border-color: #e9b546;\">Book Now</a></div>");
+
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;\">Branch :</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">"+vh.getBranch()+"</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+
+                                                    out.print("<div style=\"margin-top: 20px;\"><a class=\"btn btn-primary d-block w-100\" role=\"button\" id=\"BookNowBtn\" href=\"customer-booking-procces.jsp?vehicleDataPass=" + vh.getVehicleId() + "\" style=\"background: #e9b546;border-color: #e9b546;\">Book Now</a></div>");
                                                     out.print("</div>");
                                                     out.print("</div>");
                                                     out.print("</div>");

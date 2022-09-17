@@ -4,75 +4,166 @@
     Author     : asel
 --%>
 
+<%@page import="service.Driver"%>
+<%@page import="service.Booking"%>
+<%@page import="service.GocheetahWebService_Service"%>
+<%@page import="service.GocheetahWebService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Driver panel</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../assets/css/AXY-Contact-Us-ContactUs.css">
-    <link rel="stylesheet" href="../assets/css/AXY-Contact-Us.css">
-    <link rel="stylesheet" href="../assets/css/Features-Large-Icons-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Driver panel</title>
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+        <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="../assets/css/AXY-Contact-Us-ContactUs.css">
+        <link rel="stylesheet" href="../assets/css/AXY-Contact-Us.css">
+        <link rel="stylesheet" href="../assets/css/Features-Large-Icons-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    </head>
 
-<body id="page-top">
     <%
-            response.setHeader("Cache-Control", "no-store, must-revalidate");
-            response.setHeader("pragma", "no-cache");
-            response.setHeader("Expires", "0");
-            
-            if(session.getAttribute("NIC")==null){
-                response.sendRedirect("driver-login.jsp");
-            }
+        GocheetahWebService_Service service = new GocheetahWebService_Service();
+        GocheetahWebService proxy = service.getGocheetahWebServicePort();
+        Booking b = new Booking();
     %>
-    <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #e9b546;">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-text mx-3"><span>Gocheetah</span></div>
-                </a>
-                <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse"><span><i class="fas fa-shuttle-van"></i>Panel</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-users.html"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-others.html"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars" style="color: rgb(233,181,70);"></i></button>
-                        <ul class="navbar-nav flex-nowrap ms-auto">
-                            <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName">Asel Vinjitha</span></li>
-                            <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #233143;">Panel</h3>
-                </div>
-            </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="d-flex justify-content-between align-items-center pt-3">
-                        <p data-bss-hover-animate="tada" class="mb-0">Developed by Asel Algama&nbsp;</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="../assets/js/theme.js"></script>
-</body>
+    <body id="page-top">
+        <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
+        <%
+                        response.setHeader("Cache-Control", "no-store, must-revalidate");
+                        response.setHeader("pragma", "no-cache");
+                        response.setHeader("Expires", "0");
+                        
+                        if(session.getAttribute("NIC")==null){
+                            response.sendRedirect("driver-login.jsp");
+                        }
+            String id = session.getAttribute("id").toString();
+            String name = session.getAttribute("name").toString();
 
-</html>
+        %>
+
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+                    <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav flex-nowrap ms-auto">
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="container-fluid">
+                        <div>
+                            <h3 class="text-dark" style="color: #233143;">Your Orders</h3>
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr class="">
+                                    <td>
+                                        <%
+                                                for (Booking bk : proxy.getBookingList(id)) {
+                                                    out.print("<div style=\"padding: 0px;padding-top: 0px;padding-bottom: 20px;\">");
+                                                    out.print("<h2 class=\"text-uppercase fw-bold\" style=\"margin-top: 0px;\">Order ID : " + bk.getId() + "</h2>");
+                                                    out.print("<p style=\"margin-top: -6px;\">Customer ID: " + bk.getCustomerId() + "</p>");
+                                                    out.print("<div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Pickup Location</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + bk.getPickup() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Drop Location<br></p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + bk.getDrop() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Price</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">Rs. " + bk.getPrice() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Vehicle ID</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + bk.getVehicleId() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Date</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + bk.getDate() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"row\" style=\"height: 40px;\">");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;font-weight: bold;color: #233143;text-align: center;\">Time</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class=\"col\">");
+                                                    out.print("<div>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + bk.getTime() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("<div style=\"margin-top: 20px;\"><a class=\"btn btn-primary\" role=\"button\" id=\"BookNowBtn\" href=\"#\" style=\"background: #e9b546;border-color: #e9b546;width: 550px;margin-left: 250px;\">View Customer Feedback</a></div>");
+                                                    out.print("</div>");
+                                                }
+                                            
+                                        %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <footer class="bg-white sticky-footer">
+                            <div class="container my-auto">
+                                <div class="d-flex justify-content-between align-items-center pt-3">
+                                    <p data-bss-hover-animate="tada" class="mb-0">Developed by Asel Algama&nbsp;</p>
+                                </div>
+                            </div>
+                        </footer>
+                        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+                        <script src="../assets/js/bs-init.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+                        <script src="../assets/js/theme.js"></script>
+                        </body>
+
+                        </html>

@@ -27,8 +27,14 @@
 
     if (true) {
         try {
-            if (proxy.driverLogin(dr)) {
+            dr = proxy.driverLogin(dr);
+            if (dr != null) {
                 session.setAttribute("NIC", NIC);
+                session.setAttribute("id", dr.getDriverID());
+                session.setAttribute("name", dr.getName());
+                session.setAttribute("address", dr.getAddress());
+                session.setAttribute("mobile", dr.getMobile());
+                session.setAttribute("email", dr.getEmail());
                 response.sendRedirect("driver-panel.jsp");
             } else {
                 System.out.println("error");

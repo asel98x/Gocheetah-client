@@ -26,12 +26,14 @@
     ad.setPassword(encryptedPword);
 
     if (true) {
-        try {
-            if (proxy.adminLogin(ad)) {
+        try {ad = proxy.adminLogin(ad);
+            if (ad!=null) {
                 session.setAttribute("email", email);
+                session.setAttribute("id", ad.getAdminId());
+                session.setAttribute("name", ad.getName());
                 //response.sendRedirect("admin-panel.jsp");
                 dispatcher = request.getRequestDispatcher("admin-panel.jsp");
-                request.setAttribute("status", "success");
+                //request.setAttribute("status", "success");
             } else {
                 System.out.println("error");
                 dispatcher = request.getRequestDispatcher("admin-login.jsp");

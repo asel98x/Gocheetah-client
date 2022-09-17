@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>CUstomer Panel</title>
+        <title>Customer Panel</title>
         <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
         <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
@@ -54,14 +54,23 @@
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                         <div class="container-fluid">
                             <ul class="navbar-nav flex-nowrap ms-auto">
-                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"></span><%//out.print(name);%></li>
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"></span><%out.print(name);%></li>
                                 <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
                             </ul>
                         </div>
                     </nav>
-                    <div class="container-fluid">
-                        <div>
-                            <h3 class="text-dark" style="color: #233143;">Transports</h3>
+                    <div class="container-fluid" >
+                        <div style="background: rgba(233,181,70,0.18);">
+                            <div class="row">
+                            <div class="col">
+                                <div>
+                                    <h3 class="text-dark" style="color: #233143;width: 500px;">Transports</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="d-md-flex d-lg-flex justify-content-md-end justify-content-lg-end"><a class="btn btn-primary btn-lg" role="button" id="btnCreateVehivle" href="customer-orders.jsp" style="padding: 7px 0px;padding-top: 0px;padding-bottom: 0px;background: rgba(13,110,253,0);color: rgb(197,195,195);border-color: rgba(197,195,195,0);margin-right: 15px;"><i class="fas fa-history" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" title="Your orders"></i></a></div>
+                            </div>
+                        </div>
                         </div>
 
                         <%-- VEHICLE LIST--%>      
@@ -131,7 +140,7 @@
                                                     out.print("</div>");
                                                     out.print("<div class=\"col\">");
                                                     out.print("<div>");
-                                                    out.print("<p style=\"margin-top: 9px;\">"+vh.getBranch()+"</p>");
+                                                    out.print("<p style=\"margin-top: 9px;\">" + vh.getBranch() + "</p>");
                                                     out.print("</div>");
                                                     out.print("</div>");
 
@@ -162,7 +171,17 @@
         <script src="../assets/js/bs-init.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script src="../assets/js/theme.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="alert/dist/sweetalert.css"><!-- comment -->
 
+        <script type="text/javascript">
+            var status = document.getElementById("status").value;
+            if (status == "success") {
+                swal("congratulations!", "Your order is granted.", "success");
+            } else if (status == "failed") {
+                swal("OOps!", "Vehicle is currently Unavailable.", "error");
+            }
+        </script>
         <script type="text/javascript">
             function vehicleDataPass(vehicle) {
 

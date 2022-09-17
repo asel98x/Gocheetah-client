@@ -45,6 +45,7 @@
         String category = vh.getCategory();
         String seat = vh.getPassengers();
         String branch = vh.getBranch();
+        String availability = vh.getAvailability();
 
         String driverID = vh.getDriver();
         dr = proxy.getDriver(driverID);
@@ -69,7 +70,7 @@
         session.setAttribute("Bbranch", branch);
         session.setAttribute("BdriverID", driverID);
         session.setAttribute("BdriverName", driverName);
-        
+        session.setAttribute("Bavailability", availability);
         
         String customerName = request.getParameter("name");
         String customerAddress = request.getParameter("address");
@@ -79,8 +80,10 @@
         session.setAttribute("BcustomerAddress", customerAddress);
         session.setAttribute("BcustomerMobile", customerMobile);
         session.setAttribute("BcustomerEmail", customerEmail);
-        //session.setAttribute("Bpickup", pickup);
-        //session.setAttribute("Bdrop", drop);
+        session.setAttribute("Bpickup", pickup);
+        session.setAttribute("Bdrop", drop);
+        session.setAttribute("vehiID", vh.getVehicleId());
+        session.setAttribute("driverID", vh.getDriver());
 
     %>
     <body>

@@ -23,11 +23,15 @@
         <link rel="stylesheet" href="../assets/css/Features-Large-Icons-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity= "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity= "sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
     </head>
     <%
         GocheetahWebService_Service service = new GocheetahWebService_Service();
         GocheetahWebService proxy = service.getGocheetahWebServicePort();
         Booking b = new Booking();
+
     %>
     <body id="page-top">
         <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
@@ -41,6 +45,7 @@
             }
             String id = session.getAttribute("id").toString();
             String name = session.getAttribute("name").toString();
+            
         %>
         <div id="wrapper">
             <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #e9b546;">
@@ -70,6 +75,7 @@
                         <div class="d-sm-flex justify-content-between align-items-center mb-4">
                             <h3 class="text-dark mb-0">Customer orders</h3>
                         </div>
+                        
                         <table class="table">
                             <tbody>
                                 <tr class="">
@@ -77,8 +83,9 @@
                                         <%
                                             for (Booking bk : proxy.bookingList()) {
                                                 out.print("<div style=\"padding: 0px;padding-top: 0px;padding-bottom: 20px;\">");
-                                                out.print("<h2 class=\"text-uppercase fw-bold\" style=\"margin-top: 0px;\">Order ID : " + bk.getId() + "</h2>");
+                                                out.print("<h5 class=\"text-uppercase fw-bold\" id=\"orderID\" style=\"margin-top: 0px;\">Order ID : " + bk.getId() + "</h5>");
                                                 out.print("<p style=\"margin-top: -6px;\">Customer : " + bk.getCustomerId() + "</p>");
+                                                out.print("<p style=\"margin-top: -6px;\">driver : " + bk.getDriverId()+ "</p>");
                                                 out.print("<div>");
                                                 out.print("<div class=\"row\" style=\"height: 40px;\">");
                                                 out.print("<div class=\"col\">");
@@ -153,7 +160,9 @@
                                                 out.print("</div>");
                                                 out.print("</div>");
                                                 out.print("</div>");
-                                                out.print("<div style=\"margin-top: 20px;\"><a class=\"btn btn-primary\" role=\"button\" id=\"BookNowBtn\" href=\"#\" style=\"background: #e9b546;border-color: #e9b546;width: 550px;margin-left: 250px;\">View Customer Feedback</a></div>");
+                                                out.print("<div style=\"margin-top: 20px;\"><a class=\"btn btn-primary\" role=\"button\" id=\"BookNowBtn\" href=\"admin-view-feedback.jsp?passOrderId="+bk.getId()+"\" style=\"background: #e9b546;border-color: #e9b546;width: 550px;margin-left: 250px;\">View customer Feedback</a>");
+                                              
+                                                
                                                 out.print("</div>");
                                             }
 
@@ -179,13 +188,20 @@
             <script src="../assets/js/theme.js"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <link rel="stylesheet" href="alert/dist/sweetalert.css"><!-- comment -->
+<%
 
+%>
             <script type="text/javascript">
                 var status = document.getElementById("status2").value;
                 if (status == "success") {
                     swal("congratulations!", "You are successfully registered", "success");
                 }
+                
+                function passOrderId(order) {
+                $("#orderID").html(order);
+            }
             </script>
+            
     </body>
 
 </html>

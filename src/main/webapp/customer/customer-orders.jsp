@@ -195,7 +195,7 @@
         
         <script type="text/javascript">
             function passOrderId(order) {
-                $("#orderID").html(order);
+                $("#orderID").val(order);
             }
 
         </script>

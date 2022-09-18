@@ -24,6 +24,7 @@
     
     bk = proxy.getBookingDriver(id);
     int driverID = bk.getDriverId();
+    //String s=String.valueOf(driverID);
     System.out.println(id);
     System.out.println(customerId);
     System.out.println(driverID);

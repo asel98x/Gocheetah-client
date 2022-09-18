@@ -31,13 +31,15 @@
 
     <body id="page-top">
         <%
-//            response.setHeader("Cache-Control", "no-store, must-revalidate");
-//            response.setHeader("pragma", "no-cache");
-//            response.setHeader("Expires", "0");
-//            
-//            if(session.getAttribute("email")==null){
-//                response.sendRedirect("admin-login.jsp");
-//            }
+            response.setHeader("Cache-Control", "no-store, must-revalidate");
+            response.setHeader("pragma", "no-cache");
+            response.setHeader("Expires", "0");
+            
+            if(session.getAttribute("email")==null){
+                response.sendRedirect("admin-login.jsp");
+            }
+            String id = session.getAttribute("id").toString();
+            String name = session.getAttribute("name").toString();
 %>
 
         <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
@@ -56,8 +58,7 @@
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/admin-destination.jsp"><span><i class="fas fa-map-marked-alt"></i>Destinations</span></a></li>
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    </ul>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/p-logout.jsp"><span><i class="fas fa-sign-in-alt"></i>Logout</span></a></li>
                 </div>
             </nav>
             <div class="d-flex flex-column" id="content-wrapper">
@@ -65,8 +66,8 @@
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                         <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars" style="color: rgb(233,181,70);"></i></button>
                             <ul class="navbar-nav flex-nowrap ms-auto">
-                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName">Asel Vinjitha</span></li>
-                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="assets/img/avatars/avatar5.jpeg"></span></li>
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="assets/img/cheetah trans.png"></span></li>
                             </ul>
                         </div>
                     </nav>
@@ -452,7 +453,7 @@
                                                                     </div>
                                                                     <div class="modal-body" style="text-align: left;">
                                                                         <form action="admin/p-vehicle-add.jsp" method="post">
-                                                                            <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" id="picaddDiv" style="border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;"><input class="form-control" type="file" id="selectImage" enctype="multipart/form-data" name="selectImage"></div>
+                                                                            
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="far fa-newspaper" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="chassisNo" name="chassisNo" placeholder="Chassis Number" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-window-maximize" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><input class="form-control" type="text" id="numberPlate" name="numberPlate" placeholder="Number Plate" required="" style="border-color: rgba(133,135,150,0);"></div>
                                                                             <div class="text-start d-md-flex justify-content-md-start align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-car text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" name="category" style="border-color: rgba(133,135,150,0);">

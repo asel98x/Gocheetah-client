@@ -4,6 +4,7 @@
     Author     : asel
 --%>
 
+<%@page import="java.util.Base64.Decoder"%>
 <%@page import="java.util.Base64.Encoder"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.util.Base64"%>
@@ -31,7 +32,10 @@
     
     Encoder encoder = Base64.getEncoder();
     String encryptedPword = encoder.encodeToString(password.getBytes());
+    Decoder decorder = Base64.getDecoder();
+    byte[] bytes = decorder.decode(encryptedPword);
     
+    System.out.println("driver password"+new String (bytes));
     dr.setDriverID(ID);
     dr.setName(name);
     dr.setAddress(address);
@@ -42,7 +46,7 @@
     dr.setEmail(email);
     dr.setVehicle(vehicle);
     dr.setBranch(branch);
-    dr.setPassword(encryptedPword);
+    dr.setPassword(new String (bytes));
     
     if (true) {
         try {

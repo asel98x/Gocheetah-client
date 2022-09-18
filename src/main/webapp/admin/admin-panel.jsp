@@ -57,7 +57,8 @@
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-panel.jsp"><span><i class="fas fa-shuttle-van"></i>Panel</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-destination.jsp"><span><i class="fas fa-map-marked-alt"></i>Destinations</span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="p-logout.jsp"><span><i class="fas fa-sign-in-alt"></i>Logout</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -67,7 +68,7 @@
                         <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars" style="color: rgb(233,181,70);"></i></button>
                             <ul class="navbar-nav flex-nowrap ms-auto">
                                 <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
-                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></li>
                             </ul>
                         </div>
                     </nav>

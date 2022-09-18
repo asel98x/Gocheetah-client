@@ -33,13 +33,15 @@
 
     <body id="page-top">
         <%
-//            response.setHeader("Cache-Control", "no-store, must-revalidate");
-//            response.setHeader("pragma", "no-cache");
-//            response.setHeader("Expires", "0");
-//            
-//            if(session.getAttribute("email")==null){
-//                response.sendRedirect("admin-login.jsp");
-//            }
+            response.setHeader("Cache-Control", "no-store, must-revalidate");
+            response.setHeader("pragma", "no-cache");
+            response.setHeader("Expires", "0");
+            
+            if(session.getAttribute("email")==null){
+                response.sendRedirect("admin-login.jsp");
+            }
+            String id = session.getAttribute("id").toString();
+            String name = session.getAttribute("name").toString();
         %>
 <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
         <%
@@ -57,7 +59,7 @@
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/admin-destination.jsp"><span><i class="fas fa-map-marked-alt"></i>Destinations</span></a></li>
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin/p-logout.jsp"><span><i class="fas fa-sign-in-alt"></i>Logout</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -66,8 +68,8 @@
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                         <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars" style="color: rgb(233,181,70);"></i></button>
                             <ul class="navbar-nav flex-nowrap ms-auto">
-                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName">Asel Vinjitha</span></li>
-                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="assets/img/avatars/avatar5.jpeg"></span></li>
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="assets/img/cheetah trans.png"></span></li>
                             </ul>
                         </div>
                     </nav>

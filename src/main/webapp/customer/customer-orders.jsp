@@ -51,7 +51,7 @@
                         <div class="container-fluid">
                             <ul class="navbar-nav flex-nowrap ms-auto">
                                 <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
-                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><a href="p-logout.jsp"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></a></li>
                             </ul>
                         </div>
                     </nav>

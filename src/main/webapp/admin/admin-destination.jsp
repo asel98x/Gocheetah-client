@@ -32,14 +32,17 @@
 
     <body id="page-top">
         <%
-//            response.setHeader("Cache-Control", "no-store, must-revalidate");
-//            response.setHeader("pragma", "no-cache");
-//            response.setHeader("Expires", "0");
-//            
-//            if(session.getAttribute("email")==null){
-//                response.sendRedirect("admin-login.jsp");
-//            }
-%>
+            response.setHeader("Cache-Control", "no-store, must-revalidate");
+            response.setHeader("pragma", "no-cache");
+            response.setHeader("Expires", "0");
+
+            if (session.getAttribute("email") == null) {
+                response.sendRedirect("admin-login.jsp");
+            }
+
+            String id = session.getAttribute("id").toString();
+            String name = session.getAttribute("name").toString();
+        %>
         <input type="hidden" id="status"  value="<%= request.getAttribute("status")%>">
         <%
             GocheetahWebService_Service service = new GocheetahWebService_Service();
@@ -56,7 +59,7 @@
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-users.jsp"><i class="fas fa-user-friends"></i><span>Users</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-others2.jsp"><span><i class="fas fa-shuttle-van"></i>Others</span></a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="admin-destination.jsp"><span><i class="fas fa-map-marked-alt"></i>Destinations</span></a></li>
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="../admin-profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="p-logout.jsp"><span><i class="fas fa-sign-in-alt"></i>Logout</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -65,8 +68,8 @@
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                         <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars" style="color: rgb(233,181,70);"></i></button>
                             <ul class="navbar-nav flex-nowrap ms-auto">
-                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName">Asel Vinjitha</span></li>
-                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/avatars/avatar5.jpeg"></span></li>
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></li>
                             </ul>
                         </div>
                     </nav>
@@ -97,7 +100,7 @@
                                                         </div>
                                                         <div class="modal-body" style="text-align: left;">
                                                             <form action="p-destination-add.jsp" method="post">
-                                                                
+
                                                                 <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" style="border: 1px outset rgb(209,211,226);border-radius: 5.6px;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;"></i><select class="form-select" id="branchList-4" name="branchList" required="" style="border-color: rgba(133,135,150,0);">
                                                                         <%          for (BranchCategory bn : proxy.viewBranches()) {
                                                                                 out.print("<option name=\"branch\" selected=\"\">" + bn.getLocation() + "</option>");
@@ -157,47 +160,47 @@
                                                         out.print("</td>");
                                                         out.print("<td>");
                                                         out.print("<div>");
-                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance()+ " Km</p>");
+                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance() + " Km</p>");
                                                         out.print("</div>");
                                                         out.print("</td>");
-                                                        out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass="+ds.getDestinationID()+"\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass="+ds.getDestinationID()+"\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");
+                                                        out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass=" + ds.getDestinationID() + "\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass=" + ds.getDestinationID() + "\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");
                                                         out.print("</tr>");
                                                     }
                                                 } else {
                                                     Destination ds = proxy.getDstination(request.getParameter("DestinationSearch"));
                                                     out.print("<tr class=\"table-warning\">");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
-                                                        out.print("<div class=\"d-lg-flex justify-content-lg-start align-items-lg-center\">");
-                                                        out.print("<p id=\"destinationID\" style=\"margin-bottom: 0px;margin-left: 0px;\">" + ds.getDestinationID() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
-                                                        out.print("<p id=\"branchT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"branchT\">" + ds.getDBranch() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
-                                                        out.print("<p id=\"pickupT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"pickupT\">" + ds.getDPickup() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
-                                                        out.print("<p id=\"dropT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"dropT\">" + ds.getDDrop() + "</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td>");
-                                                        out.print("<div>");
-                                                        out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance()+ " Km</p>");
-                                                        out.print("</div>");
-                                                        out.print("</td>");
-                                                        out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass="+ds.getDestinationID()+"\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass="+ds.getDestinationID()+"\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");
-                                                        out.print("</tr>");
+                                                    out.print("<td>");
+                                                    out.print("<div>");
+                                                    out.print("<div class=\"d-lg-flex justify-content-lg-start align-items-lg-center\">");
+                                                    out.print("<p id=\"destinationID\" style=\"margin-bottom: 0px;margin-left: 0px;\">" + ds.getDestinationID() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</div>");
+                                                    out.print("</td>");
+                                                    out.print("<td>");
+                                                    out.print("<div>");
+                                                    out.print("<p id=\"branchT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"branchT\">" + ds.getDBranch() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</td>");
+                                                    out.print("<td>");
+                                                    out.print("<div>");
+                                                    out.print("<p id=\"pickupT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"pickupT\">" + ds.getDPickup() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</td>");
+                                                    out.print("<td>");
+                                                    out.print("<div>");
+                                                    out.print("<p id=\"dropT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"dropT\">" + ds.getDDrop() + "</p>");
+                                                    out.print("</div>");
+                                                    out.print("</td>");
+                                                    out.print("<td>");
+                                                    out.print("<div>");
+                                                    out.print("<p id=\"totalT\" style=\"color: rgb(164,164,164);margin-bottom: 0px;\" name=\"totalT\">" + ds.getDistance() + " Km</p>");
+                                                    out.print("</div>");
+                                                    out.print("</td>");
+                                                    out.print("<td style=\"padding-right: 0px;padding-left: 0px;\"><a class=\"btn btnMaterial btn-flat success semicircle\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"DestinationUpdateBtn\" href=\"admin-destination-update.jsp?DestinationDataPass=" + ds.getDestinationID() + "\" style=\"color: rgb(0,197,179);\" name=\"DestinationUpdateBtn\"><i class=\"fas fa-pen\"></i></a><a class=\"btn btnMaterial btn-flat accent btnNoBorders checkboxHover\" role=\"button\" data-bss-disabled-mobile=\"true\" data-bss-hover-animate=\"pulse\" id=\"deleteDestinationBtn\" style=\"margin-left: 5px;\" href=\"admin-destination-delete.jsp?DestinationDataPass=" + ds.getDestinationID() + "\" name=\"deleteDestinationBtn\"><i class=\"fas fa-trash btnNoBorders\" style=\"color: #DC3545;\"></i></a></td>");
+                                                    out.print("</tr>");
                                                 }
                                             %>
-                                       
+
                                     </table>
                                 </div>
                             </div>

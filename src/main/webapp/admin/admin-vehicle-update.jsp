@@ -30,6 +30,16 @@
         GocheetahWebService proxy = service.getGocheetahWebServicePort();
         RequestDispatcher dispatcher = null;
 
+        response.setHeader("Cache-Control", "no-store, must-revalidate");
+        response.setHeader("pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
+        if (session.getAttribute("email") == null) {
+            response.sendRedirect("admin-login.jsp");
+        }
+        String id2 = session.getAttribute("id").toString();
+        String name2 = session.getAttribute("name").toString();
+        
         Vehicle vh = new Vehicle();
         BranchCategory bc = new BranchCategory();
         String search = request.getParameter("vehicleDataPass");
@@ -47,6 +57,17 @@
 
     %>
     <body>
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+                    <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav flex-nowrap ms-auto">
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name2);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></li>
+                            </ul>
+                        </div>
+                    </nav>
         <input type="hidden" id="status2"  value="<%= request.getAttribute("status")%>">
         <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
             <div class="container position-relative">
@@ -56,7 +77,7 @@
                             <div class="card-body p-sm-5">
                                 <h2 class="text-center mb-4">Manage Vehicle</h2>
                                 <form action="p-vehicle-update.jsp" method="post">
-                                    <div class="d-md-flex justify-content-md-center align-items-md-center mb-3" id="picaddDiv" style="border-radius: 5.6px;border: 1px outset rgba(209,211,226,0) ;"><img id="vehicleCategoryPic-3" style="background: url(&quot;../assets/img/dogs/image2.jpeg&quot;);width: 130px;border-radius: 65px;" src="../assets/img/threewheel.png"><button class="btn" id="vehiclePicAddBtn-3" type="button" style="margin-left: 12px;"><i class="far fa-image"></i></button></div>
+                                    
                                     <div class="mb-3"><input class="form-control" type="text" id="vehiIDTXT" name="vehiIDTXT" placeholder="" value="<%out.print(search);%>" readonly></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="chasiTxt" name="chasiTxt" value="<%out.print(chasi);%>" placeholder="Chasi Number" required=""></div>
                                     <div class="mb-3"><input class="form-control" type="text" id="noPlateTxt" name="noPlateTxt" value="<%out.print(noPlate);%>" placeholder="Number Plate" required=""></div>

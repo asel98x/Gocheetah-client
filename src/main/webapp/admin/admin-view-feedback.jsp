@@ -31,25 +31,35 @@
         GocheetahWebService_Service service = new GocheetahWebService_Service();
         GocheetahWebService proxy = service.getGocheetahWebServicePort();
         RequestDispatcher dispatcher = null;
-        
+
+        response.setHeader("Cache-Control", "no-store, must-revalidate");
+        response.setHeader("pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
+        if (session.getAttribute("email") == null) {
+            response.sendRedirect("admin-login.jsp");
+        }
+
+        String id1 = session.getAttribute("id").toString();
+        String name = session.getAttribute("name").toString();
+
         Feedback fb = new Feedback();
         String search = request.getParameter("passOrderId");
         fb = proxy.getCustomerFeedback(search);
-        
+
         int id = fb.getFeedbackId();
         String orderID = fb.getOrderId();
         String customerId = fb.getCustomerId();
         int driverId = fb.getDriverId();
         String title = fb.getTitle();
         String feedback = fb.getFeedback();
-        
-        System.out.println("passed order id "+search);
-        System.out.println("order id "+id);
+
+        System.out.println("passed order id " + search);
+        System.out.println("order id " + id);
         System.out.println(driverId);
         System.out.println(title);
         System.out.println(feedback);
-        
-        
+
         Customer cs = new Customer();
         cs = proxy.getCustomer(customerId);
         int cId = cs.getCustomerId();
@@ -58,14 +68,14 @@
         int vMobile = cs.getMobile();
         String cNIC = cs.getNic();
         String cMail = cs.getEmail();
-        
+
         Driver dr = new Driver();
-    String dri=String.valueOf(driverId);
-       
+        String dri = String.valueOf(driverId);
+
         dr = proxy.getDriver(dri);
         int driverID = dr.getDriverID();
-        
-   //     System.out.println("Driver id "+dri);
+
+        //     System.out.println("Driver id "+dri);
         String dName = dr.getName();
         String dAddress = dr.getAddress();
         int dMobile = dr.getMobile();
@@ -76,282 +86,294 @@
 
     %>
     <body>
-        <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                        <div class="card mb-5">
-                            <div class="card-body p-sm-5">
-                                <h2 class="text-center mb-4" style="color: rgb(133,135,150);">Customer feedback</h2>
-                                <form action="admin-panel.jsp" method="post">
-                                    <div>
-                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                            <div class="col">
+
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+                    <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav flex-nowrap ms-auto">
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
+                        <div class="container position-relative">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                    <div class="card mb-5">
+                                        <div class="card-body p-sm-5">
+                                            <h2 class="text-center mb-4" style="color: rgb(133,135,150);">Customer feedback</h2>
+                                            <form action="admin-panel.jsp" method="post">
                                                 <div>
-                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>Order ID</p>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div style="margin-top: 0px;"><input class="form-control" type="text" placeholder="name" value="<%out.print(orderID);%>" readonly=""></div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                            <div class="col">
-                                                <div>
-                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Customer ID</p>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div>
-                                                    <div style="margin-top: 0px;"><a href="#customerDetailsModal" data-bs-toggle="modal" data-bs-target="#customerDetailsModal"><input class="form-control" type="text" placeholder="customer ID" value="<%out.print(customerId);%>" readonly=""></a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                            <div class="col">
-                                                <div>
-                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-tie text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Driver ID</p>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div>
-                                                    <div style="margin-top: 0px;"><a href="#driverDetailsModal" data-bs-toggle="modal" data-bs-target="#driverDetailsModal"><input class="form-control" type="text" name="driID" placeholder="Driver ID" value="<%out.print(driverId);%>" readonly=""></a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="margin-bottom: 10px;"><input class="form-control" type="text" value="<%out.print(title);%>" readonly=""></div>
-                                        <div><textarea class="form-control" style="margin-bottom: 10px;" readonly=""><%out.print(feedback);%></textarea></div>
-                                    <div style="padding-bottom: 10px;"><button class="btn btn-primary d-block w-100" type="submit"  style="background: #e9b546;border-color: #e9b546;">ok</button></div>
-                                    </div>
-                                </form>
-                                    <div class="modal fade" role="dialog" tabindex="-1" id="customerDetailsModal">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Customer details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post">
-                                                    <div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>&nbsp;Customer ID</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiName"><%out.print(cId);%></p>
-                                                                </div>
+                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                        <div class="col">
+                                                            <div>
+                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>Order ID</p>
                                                             </div>
                                                         </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Full name</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiType"><%out.print(cName);%></p>
-                                                                </div>
+                                                        <div class="col">
+                                                            <div style="margin-top: 0px;"><input class="form-control" type="text" placeholder="name" value="<%out.print(orderID);%>" readonly=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                        <div class="col">
+                                                            <div>
+                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Customer ID</p>
                                                             </div>
                                                         </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>address</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiCategory"><%out.print(cAddress);%></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Mobile</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiPassengers"><%out.print(vMobile);%></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>NIC</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(cNIC);%></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-envelope text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Email</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(cMail);%></p>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col">
+                                                            <div>
+                                                                <div style="margin-top: 0px;"><a href="#customerDetailsModal" data-bs-toggle="modal" data-bs-target="#customerDetailsModal"><input class="form-control" type="text" placeholder="customer ID" value="<%out.print(customerId);%>" readonly=""></a></div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" id="driverDetailsModal">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Driver details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post">
-                                                    <div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>&nbsp;Driver ID</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiName"><%out.print(driverID);%></p>
-                                                                </div>
+                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                        <div class="col">
+                                                            <div>
+                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-tie text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Driver ID</p>
                                                             </div>
                                                         </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Full name</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiType"><%out.print(dName);%></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>address</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiCategory"><%out.print(dAddress);%></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Mobile</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div></div>
-                                                                <div style="margin-top: 10px;">
-                                                                    <p name="vehiPassengers"><%out.print(dMobile);%></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>NIC</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(dNIC);%></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Driving licence</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(dLicence);%></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-envelope text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Email</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(dMail);%></p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="height: 40px;margin-bottom: 10px;">
-                                                            <div class="col">
-                                                                <div>
-                                                                    <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marked-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Branch</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div>
-                                                                    <div style="margin-top: 10px;">
-                                                                        <p name="driverName"><%out.print(dBranch);%></p>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col">
+                                                            <div>
+                                                                <div style="margin-top: 0px;"><a href="#driverDetailsModal" data-bs-toggle="modal" data-bs-target="#driverDetailsModal"><input class="form-control" type="text" name="driID" placeholder="Driver ID" value="<%out.print(driverId);%>" readonly=""></a></div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                    <div style="margin-bottom: 10px;"><input class="form-control" type="text" value="<%out.print(title);%>" readonly=""></div>
+                                                    <div><textarea class="form-control" style="margin-bottom: 10px;" readonly=""><%out.print(feedback);%></textarea></div>
+                                                    <div style="padding-bottom: 10px;"><button class="btn btn-primary d-block w-100" type="submit"  style="background: #e9b546;border-color: #e9b546;">Ok</button></div>
+                                                </div>
+                                            </form>
+                                            <div class="modal fade" role="dialog" tabindex="-1" id="customerDetailsModal">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Customer details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post">
+                                                                <div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>&nbsp;Customer ID</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiName"><%out.print(cId);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Full name</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiType"><%out.print(cName);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>address</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiCategory"><%out.print(cAddress);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Mobile</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiPassengers"><%out.print(vMobile);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>NIC</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(cNIC);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-envelope text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Email</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(cMail);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+                                            <div class="modal fade" role="dialog" tabindex="-1" id="driverDetailsModal">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Driver details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post">
+                                                                <div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-id-card" style="border-left-color: rgb(133, 135, 150);margin-left: 8px;margin-right: 10px;"></i>&nbsp;Driver ID</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiName"><%out.print(driverID);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-user-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Full name</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiType"><%out.print(dName);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marker-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>address</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiCategory"><%out.print(dAddress);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-phone-alt" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Mobile</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div></div>
+                                                                            <div style="margin-top: 10px;">
+                                                                                <p name="vehiPassengers"><%out.print(dMobile);%></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>NIC</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(dNIC);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-id-card text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Driving licence</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(dLicence);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="far fa-envelope text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Email</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(dMail);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="height: 40px;margin-bottom: 10px;">
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <p style="margin-top: 9px;font-weight: bold;color: #233143;"><i class="fas fa-map-marked-alt text-start" style="border-left-color: rgb(133, 135, 150);margin-left: 5px;margin-right: 10px;"></i>Branch</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div>
+                                                                                <div style="margin-top: 10px;">
+                                                                                    <p name="driverName"><%out.print(dBranch);%></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../assets/js/bs-init.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script src="../assets/js/theme.js"></script>
-    </body>
+                    </section>
+                    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+                    <script src="../assets/js/bs-init.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+                    <script src="../assets/js/theme.js"></script>
+                    </body>
 
-</html>
+                    </html>

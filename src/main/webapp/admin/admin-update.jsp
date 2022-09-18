@@ -31,6 +31,16 @@
         GocheetahWebService proxy = service.getGocheetahWebServicePort();
         RequestDispatcher dispatcher = null;
 
+        response.setHeader("Cache-Control", "no-store, must-revalidate");
+        response.setHeader("pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
+        if (session.getAttribute("email") == null) {
+            response.sendRedirect("admin-login.jsp");
+        }
+        String id2 = session.getAttribute("id").toString();
+        String name2 = session.getAttribute("name").toString();
+        
         Admin ad = new Admin();
         String search = request.getParameter("adminDataPass");
         ad = proxy.getAdmin(search);
@@ -48,6 +58,17 @@
     %>
 
     <body>
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+                    <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav flex-nowrap ms-auto">
+                                <li class="nav-item d-lg-flex justify-content-lg-center align-items-lg-center dropdown no-arrow mx-1"><span id="adminProfileName"><%out.print(name2);%></span></li>
+                                <li class="nav-item dropdown no-arrow mx-1"><span style="width: 32px;height: 32px;border-radius: 30px;"><img id="adminProfilePic" style="width: 32px;height: 32px;border-radius: 30px;" src="../assets/img/cheetah trans.png"></span></li>
+                            </ul>
+                        </div>
+                    </nav>
         <section class="position-relative py-4 py-xl-5" style="background: #F8F9FB;">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">

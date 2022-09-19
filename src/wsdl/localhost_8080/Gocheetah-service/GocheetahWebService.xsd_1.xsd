@@ -505,18 +505,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getCustomer">
-<xs:sequence>
-<xs:element name="search" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getCustomerResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:customer" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="deleteVehicle">
 <xs:sequence>
 <xs:element name="vh" type="tns:vehicle" minOccurs="0"/>
@@ -526,6 +514,18 @@
 <xs:complexType name="deleteVehicleResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomer">
+<xs:sequence>
+<xs:element name="search" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customer" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -614,15 +614,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdmin">
+<xs:complexType name="deleteVehicleCategory">
 <xs:sequence>
-<xs:element name="searach" type="xs:string" minOccurs="0"/>
+<xs:element name="vc" type="tns:vehicleCat" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdminResponse">
+<xs:complexType name="deleteVehicleCategoryResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:admin" minOccurs="0"/>
+<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -636,15 +636,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicleCategory">
+<xs:complexType name="getAdmin">
 <xs:sequence>
-<xs:element name="vc" type="tns:vehicleCat" minOccurs="0"/>
+<xs:element name="searach" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicleCategoryResponse">
+<xs:complexType name="getAdminResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
+<xs:element name="return" type="tns:admin" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -782,16 +782,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="viewBranches">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="viewBranchesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:branchCategory" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="addVehicleCategory">
 <xs:sequence>
 <xs:element name="vc" type="tns:vehicleCat" minOccurs="0"/>
@@ -801,6 +791,16 @@
 <xs:complexType name="addVehicleCategoryResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewBranches">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="viewBranchesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:branchCategory" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -872,16 +872,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="viewVehicles">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="viewVehiclesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="updateDriver">
 <xs:sequence>
 <xs:element name="dr" type="tns:driver" minOccurs="0"/>
@@ -891,6 +881,16 @@
 <xs:complexType name="updateDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewVehicles">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="viewVehiclesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicle" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

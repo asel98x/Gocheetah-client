@@ -32,6 +32,7 @@
             int mobile = Integer.parseInt(request.getParameter("customerMobile"));
             String nic = request.getParameter("customerNIC");
             String password = request.getParameter("customerPassword");
+            String branch = request.getParameter("customrbranchC");
 
             Encoder encoder = Base64.getEncoder();
             String encryptedPword = encoder.encodeToString(password.getBytes());
@@ -48,6 +49,7 @@
                     cs.setMobile(mobile);
                     cs.setNic(nic);
                     cs.setPassword(encryptedPword);
+                    cs.setBranch(branch);
 
                     proxy.customerSignup(cs);
                     dispatcher = request.getRequestDispatcher("customer-login.jsp");
